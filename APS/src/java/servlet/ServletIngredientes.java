@@ -37,9 +37,9 @@ public class ServletIngredientes extends HttpServlet {
         
         Ingredientes ingredientes = new Ingredientes();
         ingredientes.setDescricao(request.getParameter("descricao"));
-        ingredientes.setPreco((request.getParameter("preco")));   
-        ingredientes.setDtFabricacao(request.getParameter("dt_fabricacao"));
-        ingredientes.setDtValidade(request.getParameter("dt_validade"));
+        ingredientes.setPreco(Float.parseFloat(request.getParameter("preco")));   
+        ingredientes.setDtFabricacao((request.getParameter("dt_fabricacao")));
+        ingredientes.setDtValidade((request.getParameter("dt_validade")));
         ingredientes.setEstoque(Integer.parseInt(request.getParameter("estoque")));
         
         

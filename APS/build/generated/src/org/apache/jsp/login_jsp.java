@@ -51,14 +51,13 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>Login</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <form action=\"ServletAluno\" method=\"set\">\n");
+      out.write("        <form action=\"ServletCliente\" method=\"get\">\n");
       out.write("            Usuario: <input type=\"text\" name=\"usuario\" autocomplete=\"off\"><br>\n");
       out.write("            Senha: <input type=\"password\" name=\"senha\" autocomplete=\"off\"><br>\n");
       out.write("            <input type=\"submit\" name=\"salvar\" value=\"Entrar\">\n");
-      out.write("        </form> \n");
+      out.write("        </form>  \n");
       out.write("    </body>\n");
       out.write("</html>\n");
-      out.write("<a href=\"../../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/conf/web.xml\"></a>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

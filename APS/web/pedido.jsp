@@ -31,7 +31,7 @@
     </label>
 
     <div class="content">
-      <h1>Aqui vai rodar a lanchonete</h1>
+        <h1>eu não sei mexer nisso</h1>
     </div>
   </section>
 </main>
