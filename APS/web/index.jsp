@@ -2,6 +2,7 @@
     Document   : ingredientes
     Created on : 22/10/2020, 23:26:45
     Author     : USER
+    Author 2   : Marco corno
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
