@@ -1,43 +1,43 @@
 <%-- 
-    Document   : ingredientes
-    Created on : 22/10/2020, 23:26:45
-    Author     : USER
-    Author 2   : Marco corno
+    Document   : index
+    Created on : 23/10/2020, 01:31:18
+    Author     : yuri-
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Ingredientes</title>
-    </head>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <title>Mama o Yuri</title>
+            <link rel="stylesheet" type="text/css" href="style.css">      
+        </head>
     <body>
-    <center>
-        <div>
-            <form action="ServletIngredientes" method="get">
-                <table>
-                    <td><input type="radio" id="carne" name="gender" value="carne">
-                        <label for="carne">Carne</label><br></td>                    
-                    <td><input type="radio" id="pao" name="gender" value="pao">
-                        <label for="pao">Pão</label><br></td>
-                    <td><input type="radio" id="molho" name="gender" value="molho">
-                        <label for="molho">Molho</label><br></td>
-                    <td><input type="radio" id="salada" name="gender" value="salada">
-                        <label for="salada">Salada</label><br></td>
-                </table>
-                Descrição: <input type="text" name="descricao" autocomplete="off"><br>
-                Preço: <input type="text" name="preco" autocomplete="off"><br>
-                Data de Fabricação: <input type="date" name="dt_fabricacao" autocomplete="off"><br>
-                Data de Validade: <input type="date" name="dt_validade" autocomplete="off"><br>
-                Estoque: <input type="number" name="estoque" autocomplete="off"><br>
-                <table>
-                    <td><input type="submit" name="salvar" value="Salvar"></td>
-                    <td><input type="submit" name="cancelar" value="Cancelar"></td>
-                </table>           
-            </form> 
-        </div>
-    </center>
+        <main>
+  <aside>
+    <ul class="asideList">
+      <li><a href="" class="asideAnchor">Inicio</a></li>
+      <li><a href="" class="asideAnchor">Lanches</a></li>
+      <li><a href="" class="asideAnchor">Ajuda</a></li>
+      <li><a href="" class="asideAnchor">Logout</a></li>
+    </ul>
+  </aside>
+  <section>
+    <input type="checkbox" id="myInput">
+    <label for="myInput">
+      <span class="bar top"></span>
+      <span class="bar middle"></span>
+      <span class="bar bottom"></span>
+    </label>
+
+    <div class="content">
+      <h1>Aqui vai rodar a lanchonete</h1>
+    </div>
+  </section>
+</main>
+
+<a href="https://codepen.io/tonkec" class="ua" target="_blank">
+  <i class="fa fa-user"></i></a>
     </body>
 </html>
 <a href="../../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/conf/web.xml"></a>
