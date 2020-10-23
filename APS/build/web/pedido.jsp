@@ -29,10 +29,7 @@
       <span class="bar middle"></span>
       <span class="bar bottom"></span>
     </label>
-
-    <div class="content">
-        <h1>eu não sei mexer nisso</h1>
-    </div>
+       
   </section>
 </main>
 

@@ -18,7 +18,15 @@
             Nome: <input type="text" name="nome" autocomplete="off"><br>
             Sobrenome: <input type="text" name="sobrenome" autocomplete="off"><br>
             Cpf: <input type="text" name="cpf" autocomplete="off"><br>
-            Endereço: <input type="Endereco" name="endereco" autocomplete="off"><br>
+            <%-- 
+            
+            --%>
+            Cep <input type="text" name="cep" autocomplete="off"><br>
+            Rua <input type="text" name="rua" autocomplete="off"><br>
+            Numero <input type="number" name="numero" autocomplete="off"><br>
+            
+            
+            
             <input type="submit" name="salvar" value="Entrar">
         </form> 
     </body>

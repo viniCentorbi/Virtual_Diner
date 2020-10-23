@@ -56,7 +56,7 @@ public class Cliente implements Serializable {
     @Column(name = "cpf")
     private String cpf;
     @Column(name = "endereco")
-    private Serializable endereco;
+    private Endereco endereco;
 
     public Cliente() {
     }
@@ -65,12 +65,13 @@ public class Cliente implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public Cliente(Integer idUsuario, String senha, String nome, String sobrenome, String cpf) {
+    public Cliente(Integer idUsuario, String senha, String nome, String sobrenome, String cpf, Endereco endereco) {
         this.idUsuario = idUsuario;
         this.senha = senha;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
+        this.endereco = endereco;
     }
 
     public Integer getIdUsuario() {
@@ -121,11 +122,11 @@ public class Cliente implements Serializable {
         this.cpf = cpf;
     }
 
-    public Serializable getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(Serializable endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 
