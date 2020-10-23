@@ -53,7 +53,7 @@ public class Ingredientes implements Serializable {
     private String descricao;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "preco")
-    private Float preco;
+    private BigDecimal preco;
 
     public Ingredientes() {
     }
@@ -102,11 +102,11 @@ public class Ingredientes implements Serializable {
         this.descricao = descricao;
     }
 
-    public Float getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(Float preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 
