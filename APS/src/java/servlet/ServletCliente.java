@@ -5,8 +5,10 @@
  */
 package servlet;
 
+import entidade.conversor;
 import dao.ClienteDao;
 import entidade.Cliente;
+import entidade.Endereco;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author USER
  */
 
-@WebServlet(name = "ServletAluno", urlPatterns = {"/ServletAluno"})
+@WebServlet(name = "ServletCliente", urlPatterns = {"/ServletCliente"})
 public class ServletCliente extends HttpServlet {
 
 
@@ -38,12 +40,19 @@ public class ServletCliente extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         Cliente cliente = new Cliente();
+        
         cliente.setUsuario(request.getParameter("usuario"));
         cliente.setSenha(request.getParameter("senha"));
         cliente.setNome(request.getParameter("nome"));
         cliente.setSobrenome(request.getParameter("sobrenome"));
         cliente.setCpf(request.getParameter("cpf"));
-        cliente.setEndereco(request.getParameter("endereco"));
+        
+        Endereco endereco = new Endereco(request.getParameter("rua"), 
+                                        Integer.parseInt(request.getParameter("numero")),
+                                        request.getParameter("bairro"));
+        
+        
+        cliente.setEndereco(endereco);        
         
         ClienteDao clienteDao = new ClienteDao();
         clienteDao.salvar(cliente);

@@ -23,5 +23,10 @@ public class IngredientesDao {
         emf.close();
     }
     
+    public void salvar(Ingredientes ingredientes){
+        this.abreConexao();
+        em.persist(ingredientes);
+        this.fechaConexao();
+    }  
 
 }
