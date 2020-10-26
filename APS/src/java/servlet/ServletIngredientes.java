@@ -7,8 +7,10 @@ package servlet;
 
 import dao.IngredientesDao;
 import entidade.Ingredientes;
+import entidade.Conversor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,12 +36,14 @@ public class ServletIngredientes extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        Conversor conversor = new Conversor();
+        BigDecimal preco = new BigDecimal(request.getParameter("preco"));
         
         Ingredientes ingredientes = new Ingredientes();
         ingredientes.setDescricao(request.getParameter("descricao"));
-        //ingredientes.setPreco(Float.parseFloat(request.getParameter("preco")));   
-        //ingredientes.setDtFabricacao(request.getParameter("dt_fabricacao"));
-        //ingredientes.setDtValidade(request.getParameter("dt_validade"));
+        ingredientes.setPreco(preco);   
+        ingredientes.setDtFabricacao(conversor.converter(request.getParameter("dt_fabricacao")));
+        ingredientes.setDtValidade(conversor.converter(request.getParameter("dt_validade")));
         ingredientes.setEstoque(Integer.parseInt(request.getParameter("estoque")));
         
         

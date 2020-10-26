@@ -5,7 +5,7 @@
  */
 package servlet;
 
-import entidade.conversor;
+import entidade.Conversor;
 import dao.ClienteDao;
 import entidade.Cliente;
 import entidade.Endereco;
