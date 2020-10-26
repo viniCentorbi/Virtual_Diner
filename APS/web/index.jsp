@@ -19,7 +19,7 @@
       <li><a href="" class="asideAnchor">Inicio</a></li>
       <li><a href="" class="asideAnchor">Lanches</a></li>
       <li><a href="" class="asideAnchor">Ajuda</a></li>
-      <li><a href="" class="asideAnchor">Logout</a></li>
+      <li><a href="login.jsp" class="asideAnchor">Logout</a></li>
     </ul>
   </aside>
   <section>
