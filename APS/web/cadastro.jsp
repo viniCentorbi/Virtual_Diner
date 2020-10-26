@@ -18,10 +18,9 @@
                 Nome: <input type="text" name="nome" autocomplete="off"><br>
                 Sobrenome: <input type="text" name="sobrenome" autocomplete="off"><br>
                 Cpf: <input type="text" name="cpf" autocomplete="off"><br>
-                Endereco: <input type="Endereco" name="endereco" autocomplete="off"><br>
-                Rua: <input type="Endereco" name="rua" autocomplete="off"><br>
-                Numero: <input type="Endereco" name="numero" autocomplete="off"><br>
-                Bairro: <input type="Endereco" name="bairro" autocomplete="off"><br>
+                Rua: <input type="text" name="rua" autocomplete="off"><br>
+                Numero: <input type="text" name="numero" autocomplete="off"><br>
+                Bairro: <input type="text" name="bairro" autocomplete="off"><br>
                 
                 <table>
                     <td><input type="submit" name="salvar" value="Salvar"></td>

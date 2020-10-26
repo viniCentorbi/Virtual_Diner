@@ -8,24 +8,31 @@ public class Endereco {
     public Endereco(String rua, int numero, String bairro) {
         this.rua = rua;
         this.numero = numero;
-        this.bairro = bairro;
+        this.cep = bairro;
     }    
         
-    public static PGobject inserirBD() throws SQLException{
+    public PGobject inserirBD() throws SQLException{
         
-        PGobject typeEndereco = new PGobject();  
+        PGobject object = new PGobject();  
         
-        typeEndereco.setType("Endereco");
-        return typeEndereco;
+        String endereco = "(\"" + rua + "\", " + numero + ", \"" + cep + "\")";
+   
+        object.setType("endereco");
+        object.setValue(endereco);
+        
+        return object;
     }
     
-    public static Endereco retirarBD(PGobject typeString) throws SQLException{
-                
-        System.out.println(typeString.toString());
+    public static Endereco retirarBD(PGobject object) throws SQLException{
+        String str = object.toString();
+        str = str.substring(1, str.length()-1);
+        String[] endereco = str.split(",");
+
+        String rua = endereco[0].substring(1, endereco[0].length()-1);
+        Integer num = Integer.parseInt(endereco[1]);
+        String cep = endereco[2];
         
-        Endereco endereco = new Endereco("",0,"");
-        
-        return endereco;
+        return new Endereco(rua, num, cep);
     }
     
     
@@ -33,7 +40,7 @@ public class Endereco {
     
     private String rua;
     private int numero;
-    private String bairro;
+    private String cep;
 
     public String getRua() {
         return rua;
@@ -51,12 +58,12 @@ public class Endereco {
         this.numero = numero;
     }
 
-    public String getBairro() {
-        return bairro;
+    public String getCep() {
+        return cep;
     }
 
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
     
     
