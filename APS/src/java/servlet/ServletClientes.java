@@ -49,7 +49,7 @@ public class ServletClientes extends HttpServlet {
         
         Endereco endereco = new Endereco(request.getParameter("rua"), 
                                         Integer.parseInt(request.getParameter("numero")),
-                                        request.getParameter("bairro"));
+                                        request.getParameter("cep"));
         
         
         cliente.setEndereco(endereco);        
@@ -66,7 +66,7 @@ public class ServletClientes extends HttpServlet {
             out.println("<title>Servlet ServletCliente</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServletCliente at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Cliente Cadastrado com Sucesso</h1>");
             out.println("</body>");
             out.println("</html>");
         }

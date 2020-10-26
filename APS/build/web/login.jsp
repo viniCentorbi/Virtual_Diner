@@ -24,6 +24,7 @@
 			<input type="password" placeholder="Senha" />
 			<button>Registrar</button>
 		</form>
+            
 	</div>
 	<div class="form-container sign-in-container">
 		<form action="#">
@@ -47,7 +48,7 @@
                                 <img src="CheeseBurger.png" alt="Trulli" width="60" height="40">
 				<h1>Olá Amigo!</h1>
 				<p>Registre-se para fazer parte da nossa lanchonete</p>
-				<button class="ghost" id="signUp">Registre-se</button>
+				<button onclick="window.location.href='cadastro.jsp'" class="ghost" id="signUp">Registre-se</button>
 			</div>
 		</div>
 	</div>
@@ -59,5 +60,5 @@
 	</p>
 </footer>
     </body>
-    <script type="text/javascript" src="loginjs.js"></script>
+    
 </html>

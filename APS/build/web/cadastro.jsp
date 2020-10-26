@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Cadastro</title>
     </head>
     <body>
         <form action="ServletClientes" method="get">
@@ -20,8 +20,7 @@
                 Cpf: <input type="text" name="cpf" autocomplete="off"><br>
                 Rua: <input type="text" name="rua" autocomplete="off"><br>
                 Numero: <input type="text" name="numero" autocomplete="off"><br>
-                Bairro: <input type="text" name="bairro" autocomplete="off"><br>
-                
+                CEP: <input type="text" name="cep" autocomplete="off"><br>
                 <table>
                     <td><input type="submit" name="salvar" value="Salvar"></td>
                     <td><input type="submit" name="cancelar" value="Cancelar"></td>

@@ -5,10 +5,10 @@ import java.sql.SQLException;
 
 public class Endereco {
 
-    public Endereco(String rua, int numero, String bairro) {
+    public Endereco(String rua, int numero, String cep) {
         this.rua = rua;
         this.numero = numero;
-        this.cep = bairro;
+        this.cep = cep;
     }    
         
     public PGobject inserirBD() throws SQLException{
