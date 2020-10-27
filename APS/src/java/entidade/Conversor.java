@@ -54,4 +54,28 @@ public class Conversor implements AttributeConverter<Endereco, PGobject> {
         return preco;
     }
     
+    public Date StringToDate(String data) {
+                
+    try {
+        
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date parsed = formato.parse(data);
+        
+        
+                    
+        return parsed;
+    }catch (ParseException ex) {
+        ex.printStackTrace();
+    }
+    return null;
+}
+    
+    public Date DateToSqlDate(Date data){
+
+        java.sql.Date sql;
+        sql = new java.sql.Date(data.getTime());
+
+        return sql;
+    }
+    
 }
