@@ -45,44 +45,28 @@ public class ServletIngredientes extends HttpServlet {
         com os dados do ingrediente para converter o necessário. Porém não está funcionando.
         */
         
-        Conversor conversor = new Conversor();
-        
+              
         //Pegando dados do Form
         String descricao = request.getParameter("descricao");
         BigDecimal preco = new BigDecimal(request.getParameter("preco"));
-        Date dt_fab = conversor.StringToDate(request.getParameter("dt_fabricacao"));
-        Date dt_val = conversor.StringToDate(request.getParameter("dt_validade"));
+        String dt_fab = request.getParameter("dt_fabricacao");
+        String dt_val = request.getParameter("dt_validade");
         int estoque = Integer.parseInt(request.getParameter("estoque"));
 
         //Salvando os dados no ingrediente
         Ingredientes ingredientes = new Ingredientes();
-
         ingredientes.setDescricao(descricao);         
         ingredientes.setPreco(preco);        
         ingredientes.setDtFabricacao(dt_fab);
-        ingredientes.setDtValidade(dt_val);        
+        ingredientes.setDtValidade(dt_val);         
         ingredientes.setEstoque(estoque);
-
-        //Convertendo o que precisa converte
-        Ingredientes ingredientesFormat = new Ingredientes();
-
-        ingredientesFormat.setDescricao(ingredientes.getDescricao());
-        ingredientesFormat.setPreco(ingredientes.getPreco());      
         
-        //java.sql.Date sqlDt_fab = new java.sql.Date(dt_fab.getTime());
-        //java.sql.Date sqlDt_val = new java.sql.Date(dt_val.getTime());
-        
-        Date teste1 = conversor.StringToDate("Mon Nov 23 00:00:00 BRST 2015");
-        Date teste2 = conversor.StringToDate("Mon Nov 23 00:00:00 BRST 2015");
-        
-        //ingredientesFormat.setDtFabricacao(teste1.getTime());
-        //ingredientesFormat.setDtValidade(teste2.getTime()); 
-        
-        ingredientesFormat.setEstoque(ingredientes.getEstoque());
-
         //Salvando no Banco
         IngredientesDao ingredientesDao = new IngredientesDao();   
-        ingredientesDao.salvar(ingredientesFormat);       
+        ingredientesDao.salvar(ingredientes);  
+        
+       
+             
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */

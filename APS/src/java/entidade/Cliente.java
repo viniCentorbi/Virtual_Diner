@@ -5,7 +5,6 @@
  */
 package entidade;
 
-import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author USER
+ * @author Vinicius
  */
 @Entity
 @Table(name = "cliente")
@@ -33,7 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Cliente.findBySobrenome", query = "SELECT c FROM Cliente c WHERE c.sobrenome = :sobrenome")
     , @NamedQuery(name = "Cliente.findByCpf", query = "SELECT c FROM Cliente c WHERE c.cpf = :cpf")
     , @NamedQuery(name = "Cliente.findByEndereco", query = "SELECT c FROM Cliente c WHERE c.endereco = :endereco")})
-public class Cliente implements Serializable {
+public class Cliente{
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -52,7 +51,6 @@ public class Cliente implements Serializable {
     @Basic(optional = false)
     @Column(name = "sobrenome")
     private String sobrenome;
-    @Basic(optional = false)
     @Column(name = "cpf")
     private String cpf;
     @Column(name = "endereco")
@@ -65,12 +63,11 @@ public class Cliente implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public Cliente(Integer idUsuario, String senha, String nome, String sobrenome, String cpf) {
+    public Cliente(Integer idUsuario, String senha, String nome, String sobrenome) {
         this.idUsuario = idUsuario;
         this.senha = senha;
         this.nome = nome;
         this.sobrenome = sobrenome;
-        this.cpf = cpf;
     }
 
     public Integer getIdUsuario() {

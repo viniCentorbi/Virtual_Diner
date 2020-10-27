@@ -7,7 +7,6 @@ package entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,13 +16,11 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author USER
+ * @author Vinicius
  */
 @Entity
 @Table(name = "ingredientes")
@@ -47,11 +44,9 @@ public class Ingredientes implements Serializable {
     @Column(name = "estoque")
     private Integer estoque;
     @Column(name = "dt_fabricacao")
-    @Temporal(TemporalType.DATE)
-    private Date dtFabricacao;
+    private String dtFabricacao;
     @Column(name = "dt_validade")
-    @Temporal(TemporalType.DATE)
-    private Date dtValidade;
+    private String dtValidade;
     @Column(name = "descricao")
     private String descricao;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -81,19 +76,19 @@ public class Ingredientes implements Serializable {
         this.estoque = estoque;
     }
 
-    public Date getDtFabricacao() {
+    public String getDtFabricacao() {
         return dtFabricacao;
     }
 
-    public void setDtFabricacao(Date dtFabricacao) {
+    public void setDtFabricacao(String dtFabricacao) {
         this.dtFabricacao = dtFabricacao;
     }
 
-    public Date getDtValidade() {
+    public String getDtValidade() {
         return dtValidade;
     }
 
-    public void setDtValidade(Date dtValidade) {
+    public void setDtValidade(String dtValidade) {
         this.dtValidade = dtValidade;
     }
 

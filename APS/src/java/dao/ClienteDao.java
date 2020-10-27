@@ -1,29 +1,28 @@
 package dao;
-import entidade.Cliente;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
-public class ClienteDao {
-    private static EntityManagerFactory emf;
-    private static EntityManager em;
-    
-    public void abreConexao(){
-        emf = Persistence.createEntityManagerFactory("APSPU");
-        em = emf.createEntityManager();
-        em.getTransaction().begin();
-    }
-    
-    public void fechaConexao(){
-        em.getTransaction().commit();
-        em.close();
-        emf.close();
-    }
-    
-    public void salvar(Cliente cliente){
+import entidade.Cliente;
+import java.util.List;
+
+public class ClienteDao extends UtilDao{
+   
+    public List<Cliente> listarCliente(){
+        
         this.abreConexao();
-        em.persist(cliente);
+        
+        List<Cliente> clientes;
+        clientes = em.createQuery("SELECT c from Cliente as c").getResultList();
         this.fechaConexao();
+        
+        return clientes;        
+    }
+    
+    public Cliente buscarIngredienteId(int idCliente){
+        this.abreConexao();
+        
+        Cliente cliente = em.find(Cliente.class, idCliente);
+        this.fechaConexao();
+        
+        return cliente;
     }
         
 }

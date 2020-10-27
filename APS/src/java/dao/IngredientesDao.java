@@ -1,32 +1,30 @@
 package dao;
 
-
 import entidade.Ingredientes;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import java.util.List;
 
-
-public class IngredientesDao {
-    private static EntityManagerFactory emf;
-    private static EntityManager em;
-    
-    public void abreConexao(){
-        emf = Persistence.createEntityManagerFactory("APSPU");
-        em = emf.createEntityManager();
-        em.getTransaction().begin();
-    }
-    
-    public void fechaConexao(){
-        em.getTransaction().commit();
-        em.close();
-        emf.close();
-    }
-    
-    public void salvar(Ingredientes ingredientes){
+public class IngredientesDao extends UtilDao{
+      
+    public List<Ingredientes> listarIngredientes(){
+        
         this.abreConexao();
-        em.persist(ingredientes);
+        
+        List<Ingredientes> ingredientes;
+        ingredientes = em.createQuery("SELECT i from ingredientes as i").getResultList();
         this.fechaConexao();
-    }  
+        
+        return ingredientes;        
+    }
+    
+    public Ingredientes buscarIngredienteId(int idIngredientes){
+        this.abreConexao();
+        
+        Ingredientes ingredientes = em.find(Ingredientes.class, idIngredientes);
+        this.fechaConexao();
+        
+        return ingredientes;
+    } 
+        
+        
 
 }
