@@ -56,7 +56,7 @@ public final class cadastro_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                Senha: <input type=\"password\" name=\"senha\" autocomplete=\"off\"><br>\r\n");
       out.write("                Nome: <input type=\"text\" name=\"nome\" autocomplete=\"off\"><br>\r\n");
       out.write("                Sobrenome: <input type=\"text\" name=\"sobrenome\" autocomplete=\"off\"><br>\r\n");
-      out.write("                Cpf: <input type=\"text\" name=\"cpf\" autocomplete=\"off\"><br>\r\n");
+      out.write("                Cpf: <input type=\"text\" name=\"cpf\" autocomplete=\"off\" data-mask=\"000.000.00-00\"><br>\r\n");
       out.write("                Rua: <input type=\"text\" name=\"rua\" autocomplete=\"off\"><br>\r\n");
       out.write("                Numero: <input type=\"text\" name=\"numero\" autocomplete=\"off\"><br>\r\n");
       out.write("                CEP: <input type=\"text\" name=\"cep\" autocomplete=\"off\"><br>\r\n");

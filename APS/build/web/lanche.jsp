@@ -15,10 +15,34 @@
         <center>
         <div>
             <form action="ServletLanche" method="get">
-                Pão: <input type="number" name="id_pao"><br>
-                Carne: <input type="number" name="id_carne"><br>
-                Salada: <input type="number" name="id_salada"><br>
-                Molho: <input type="number" name="id_molho"><br>
+                Pão:
+                <select name="pao" id="pao" required>
+                    <option value="">Selecione</option>
+                    <option value="Pão Australiano">Pão Australiano</option>
+                    <option value="Pão Frances">Pão Frances</option>                   
+                </select>
+                   
+                Carne:
+                <select name="carne" id="carne" required>
+                    <option value="">Selecione</option>
+                    <option value="Linguiça">Linguiça</option>
+                    <option value="Hamburguer">Hamburguer</option>                   
+                </select>
+                
+                Salada:
+                <select name="salada" id="salada">
+                    <option value="">Selecione</option>
+                    <option value="Alface">Alface</option>
+                    <option value="Tomate">Tomate</option>                   
+                </select>
+                
+                Molho:
+                <select name="molho" id="molho">
+                    <option value="">Selecione</option>
+                    <option value="Maionese">Maionese</option>
+                    <option value="Molho da Casa">Molho da Casa</option>                   
+                </select><br><br>
+                
                 <table>
                     <td><input type="submit" name="salvar" value="Salvar"></td>
                     <td><input type="submit" name="cancelar" value="Cancelar"></td>

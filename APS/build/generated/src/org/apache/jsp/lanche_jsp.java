@@ -54,10 +54,10 @@ public final class lanche_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <center>\n");
       out.write("        <div>\n");
       out.write("            <form action=\"ServletLanche\" method=\"get\">\n");
-      out.write("                Pão: <input type=\"number\" name=\"id_pao\"><br>\n");
-      out.write("                Carne: <input type=\"number\" name=\"id_carne\"><br>\n");
-      out.write("                Salada: <input type=\"number\" name=\"id_salada\"><br>\n");
-      out.write("                Molho: <input type=\"number\" name=\"id_molho\"><br>\n");
+      out.write("                Pão: <input type=\"select\" name=\"id_pao\"><br>\n");
+      out.write("                Carne: <input type=\"select\" name=\"id_carne\"><br>\n");
+      out.write("                Salada: <input type=\"select\" name=\"id_salada\"><br>\n");
+      out.write("                Molho: <input type=\"select\" name=\"id_molho\"><br>\n");
       out.write("                <table>\n");
       out.write("                    <td><input type=\"submit\" name=\"salvar\" value=\"Salvar\"></td>\n");
       out.write("                    <td><input type=\"submit\" name=\"cancelar\" value=\"Cancelar\"></td>\n");
