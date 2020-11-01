@@ -54,7 +54,7 @@ public final class pedido_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <center>\n");
       out.write("        <div>\n");
       out.write("            <form action=\"ServletPedido\" method=\"get\">\n");
-      out.write("                Número do Pedido <input type=\"number\" name=\"num_pedido\"><br>\n");
+      out.write("                Número do Pedido: <input type=\"number\" name=\"num_pedido\"><br>\n");
       out.write("                Preço Total: <input type=\"text\" name=\"preco_pedido\"><br>\n");
       out.write("                Hora do Pedido: <input type=\"time\" name=\"dt_hora_pedido\"><br>\n");
       out.write("                <table>\n");
@@ -63,6 +63,7 @@ public final class pedido_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </table>           \n");
       out.write("            </form> \n");
       out.write("        </div>\n");
+      out.write("        </center>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

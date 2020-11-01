@@ -7,7 +7,9 @@ package entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,8 +17,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,6 +38,15 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Ingredientes.findByDescricao", query = "SELECT i FROM Ingredientes i WHERE i.descricao = :descricao")
     , @NamedQuery(name = "Ingredientes.findByPreco", query = "SELECT i FROM Ingredientes i WHERE i.preco = :preco")})
 public class Ingredientes implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCarne")
+    private Collection<Lanche> lancheCollection;
+    @OneToMany(mappedBy = "idMolho")
+    private Collection<Lanche> lancheCollection1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPao")
+    private Collection<Lanche> lancheCollection2;
+    @OneToMany(mappedBy = "idSalada")
+    private Collection<Lanche> lancheCollection3;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -131,6 +144,42 @@ public class Ingredientes implements Serializable {
     @Override
     public String toString() {
         return "entidade.Ingredientes[ idIngredientes=" + idIngredientes + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Lanche> getLancheCollection() {
+        return lancheCollection;
+    }
+
+    public void setLancheCollection(Collection<Lanche> lancheCollection) {
+        this.lancheCollection = lancheCollection;
+    }
+
+    @XmlTransient
+    public Collection<Lanche> getLancheCollection1() {
+        return lancheCollection1;
+    }
+
+    public void setLancheCollection1(Collection<Lanche> lancheCollection1) {
+        this.lancheCollection1 = lancheCollection1;
+    }
+
+    @XmlTransient
+    public Collection<Lanche> getLancheCollection2() {
+        return lancheCollection2;
+    }
+
+    public void setLancheCollection2(Collection<Lanche> lancheCollection2) {
+        this.lancheCollection2 = lancheCollection2;
+    }
+
+    @XmlTransient
+    public Collection<Lanche> getLancheCollection3() {
+        return lancheCollection3;
+    }
+
+    public void setLancheCollection3(Collection<Lanche> lancheCollection3) {
+        this.lancheCollection3 = lancheCollection3;
     }
     
 }

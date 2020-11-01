@@ -5,6 +5,13 @@
  */
 package servlet;
 
+import dao.LancheDao;
+import entidade.Ingredientes;
+import entidade.Lanche;
+import static entidade.Lanche_.idCarne;
+import static entidade.Lanche_.idMolho;
+import static entidade.Lanche_.idPao;
+import static entidade.Lanche_.idSalada;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -32,6 +39,26 @@ public class ServletLanche extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        int IdPao = Integer.parseInt(request.getParameter("pao"));
+        int IdCarne = Integer.parseInt(request.getParameter("carne"));
+        int IdSalada = Integer.parseInt(request.getParameter("salada"));
+        int IdMolho = Integer.parseInt(request.getParameter("molho"));
+  
+        
+        Lanche lanche = new Lanche();
+        
+       lanche.setIdPao((Ingredientes) idPao);
+       lanche.setIdCarne((Ingredientes)idCarne);
+       lanche.setIdSalada((Ingredientes) idSalada);
+       lanche.setIdMolho((Ingredientes) idMolho);
+       
+       
+        LancheDao lancheDao = new LancheDao();
+        lancheDao.salvar(lanche);    
+       
+       
+        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
