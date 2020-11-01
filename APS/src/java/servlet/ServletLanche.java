@@ -5,6 +5,7 @@
  */
 package servlet;
 
+import dao.IngredientesDao;
 import dao.LancheDao;
 import entidade.Ingredientes;
 import entidade.Lanche;
@@ -39,25 +40,62 @@ public class ServletLanche extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+                
+        String tipoPao = request.getParameter("pao");
+        String tipoCarne = request.getParameter("carne");
+        String tipoSalada = request.getParameter("salada");
+        String tipoMolho = request.getParameter("molho");
         
-        int IdPao = Integer.parseInt(request.getParameter("pao"));
-        int IdCarne = Integer.parseInt(request.getParameter("carne"));
-        int IdSalada = Integer.parseInt(request.getParameter("salada"));
-        int IdMolho = Integer.parseInt(request.getParameter("molho"));
-  
+        Ingredientes IdPao = null;
+        Ingredientes IdCarne = null;
+        Ingredientes IdSalada = null;
+        Ingredientes IdMolho = null;
         
-        Lanche lanche = new Lanche();
+        LancheDao ld = new LancheDao();        
+        Lanche l = new Lanche();
+        IngredientesDao ingDao = new IngredientesDao();
         
-       lanche.setIdPao((Ingredientes) idPao);
-       lanche.setIdCarne((Ingredientes)idCarne);
-       lanche.setIdSalada((Ingredientes) idSalada);
-       lanche.setIdMolho((Ingredientes) idMolho);
+        Ingredientes pao = new Ingredientes();
+        Ingredientes carne = new Ingredientes();
+        Ingredientes salada = new Ingredientes();
+        Ingredientes molho = new Ingredientes();
+        
+        int tam = ingDao.listarIngredientes().size();
+        
+        for (int i = 0; i < tam; i++) {
+            
+            if(tipoPao.equals(ingDao.listarIngredientes().get(i).getDescricao())){
+                
+                pao.setIdIngredientes(ingDao.listarIngredientes().get(i).getIdIngredientes());
+                IdPao = pao;
+                
+            }
+            if(tipoCarne.equals(ingDao.listarIngredientes().get(i).getDescricao())){
+                
+                carne.setIdIngredientes(ingDao.listarIngredientes().get(i).getIdIngredientes());
+                IdCarne = carne;
+                
+            }
+            if(tipoSalada.equals(ingDao.listarIngredientes().get(i).getDescricao())){
+                
+                salada.setIdIngredientes(ingDao.listarIngredientes().get(i).getIdIngredientes());
+                IdSalada = salada;
+                
+            }
+            if(tipoMolho.equals(ingDao.listarIngredientes().get(i).getDescricao())){
+                
+                molho.setIdIngredientes(ingDao.listarIngredientes().get(i).getIdIngredientes());
+                IdMolho = molho;
+                
+            }            
+        }
+        
+        l.setIdPao(IdPao);
+        l.setIdCarne(IdCarne);
+        l.setIdSalada(IdSalada);
+        l.setIdMolho(IdMolho);
        
-       
-        LancheDao lancheDao = new LancheDao();
-        lancheDao.salvar(lanche);    
-       
-       
+        ld.salvar(l);
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */

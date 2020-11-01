@@ -61,7 +61,7 @@ public final class ingredientes_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                    <td><input type=\"radio\" name=\"tipo\" >Salada</td>\r\n");
       out.write("                </table>\r\n");
       out.write("                Descrição: <input type=\"text\" name=\"descricao\" autocomplete=\"off\"><br>\r\n");
-      out.write("                Preço: <input type=\"text\" name=\"preco\" autocomplete=\"off\"><br>\r\n");
+      out.write("                Preço: <input type=\"text\" name=\"preco\"><br>\r\n");
       out.write("                Data de Fabricação: <input type=\"date\" name=\"dt_fabricacao\" autocomplete=\"off\"><br>\r\n");
       out.write("                Data de Validade: <input type=\"date\" name=\"dt_validade\" autocomplete=\"off\"><br>\r\n");
       out.write("                Estoque: <input type=\"number\" name=\"estoque\" autocomplete=\"off\"><br>\r\n");

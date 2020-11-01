@@ -10,7 +10,7 @@ public class IngredientesDao extends UtilDao{
         this.abreConexao();
         
         List<Ingredientes> ingredientes;
-        ingredientes = em.createQuery("SELECT i from ingredientes as i").getResultList();
+        ingredientes = em.createQuery("SELECT i from Ingredientes as i").getResultList();
         this.fechaConexao();
         
         return ingredientes;        
