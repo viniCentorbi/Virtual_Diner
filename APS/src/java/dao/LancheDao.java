@@ -8,10 +8,19 @@ public class LancheDao extends UtilDao {
         
         this.abreConexao();
         
-        List<Lanche> lanche;
-        lanche = em.createQuery("SELECT i from lanche as c").getResultList();
+        List<Lanche> lanches;
+        lanches = em.createQuery("SELECT l from Lanche as l").getResultList();
         this.fechaConexao();
         
-        return lanche;        
+        return lanches;        
+    }
+    
+    public Lanche buscarLancheId(int idLanche){
+        this.abreConexao();
+        
+        Lanche lanche = em.find(Lanche.class, idLanche);
+        this.fechaConexao();
+        
+        return lanche;
     }
 }

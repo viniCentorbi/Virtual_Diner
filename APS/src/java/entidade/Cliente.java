@@ -5,6 +5,7 @@
  */
 package entidade;
 
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,8 +32,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Cliente.findByNome", query = "SELECT c FROM Cliente c WHERE c.nome = :nome")
     , @NamedQuery(name = "Cliente.findBySobrenome", query = "SELECT c FROM Cliente c WHERE c.sobrenome = :sobrenome")
     , @NamedQuery(name = "Cliente.findByCpf", query = "SELECT c FROM Cliente c WHERE c.cpf = :cpf")
-    , @NamedQuery(name = "Cliente.findByEndereco", query = "SELECT c FROM Cliente c WHERE c.endereco = :endereco")})
+    , @NamedQuery(name = "Cliente.findByEndereco", query = "SELECT c FROM Cliente c WHERE c.endereco = :endereco")
+    , @NamedQuery(name = "Cliente.findByFgAtivo", query = "SELECT c FROM Cliente c WHERE c.fgAtivo = :fgAtivo")})
 public class Cliente{
+
+    @Column(name = "endereco")
+    private Endereco endereco;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -53,8 +58,8 @@ public class Cliente{
     private String sobrenome;
     @Column(name = "cpf")
     private String cpf;
-    @Column(name = "endereco")
-    private Endereco endereco;
+    @Column(name = "fg_ativo")
+    private Boolean fgAtivo;
 
     public Cliente() {
     }
@@ -118,12 +123,13 @@ public class Cliente{
         this.cpf = cpf;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+
+    public Boolean getFgAtivo() {
+        return fgAtivo;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setFgAtivo(Boolean fgAtivo) {
+        this.fgAtivo = fgAtivo;
     }
 
     @Override
@@ -151,4 +157,26 @@ public class Cliente{
         return "entidade.Cliente[ idUsuario=" + idUsuario + " ]";
     }
     
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+    
+    
+    
+    public boolean validarCliente(Cliente c, String usuario, String senha){
+        
+        return usuario.equals(c.getUsuario()) && senha.equals(c.getSenha());
+        
+    }
+    
+    public boolean verificarTipoCliente(Cliente c){
+        
+        return c.getFgAtivo();
+        
+    }
 }

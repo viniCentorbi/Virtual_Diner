@@ -9,12 +9,12 @@ import dao.IngredientesDao;
 import dao.LancheDao;
 import entidade.Ingredientes;
 import entidade.Lanche;
-import static entidade.Lanche_.idCarne;
-import static entidade.Lanche_.idMolho;
-import static entidade.Lanche_.idPao;
-import static entidade.Lanche_.idSalada;
+import entidade.Login;
+import entidade.Pedido;
+import entidade.PedidoPK;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -96,6 +96,12 @@ public class ServletLanche extends HttpServlet {
         l.setIdMolho(IdMolho);
        
         ld.salvar(l);
+        
+        RequestDispatcher rd = null;
+        rd = request.getRequestDispatcher("/pedido.jsp");
+        rd.forward(request, response);
+        
+        
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */

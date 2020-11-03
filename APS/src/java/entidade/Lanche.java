@@ -6,7 +6,9 @@
 package entidade;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,8 +18,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,6 +34,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Lanche.findAll", query = "SELECT l FROM Lanche l")
     , @NamedQuery(name = "Lanche.findByIdLanche", query = "SELECT l FROM Lanche l WHERE l.idLanche = :idLanche")})
 public class Lanche implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lanche")
+    private Collection<Pedido> pedidoCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -120,6 +127,15 @@ public class Lanche implements Serializable {
     @Override
     public String toString() {
         return "entidade.Lanche[ idLanche=" + idLanche + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Pedido> getPedidoCollection() {
+        return pedidoCollection;
+    }
+
+    public void setPedidoCollection(Collection<Pedido> pedidoCollection) {
+        this.pedidoCollection = pedidoCollection;
     }
     
 }

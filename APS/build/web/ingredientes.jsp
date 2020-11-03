@@ -16,10 +16,10 @@
         <div>
             <form action="ServletIngredientes" method="get">
                 <table>
-                    <td><input type="radio" name="tipo" checked="on">Carne</td>
-                    <td><input type="radio" name="tipo" >Pão</td>
-                    <td><input type="radio" name="tipo" >Molho</td>
-                    <td><input type="radio" name="tipo" >Salada</td>
+                    <td><input id="1" type="radio" name="tipo" value="Carne">Carne</td>
+                    <td><input id="2" type="radio" name="tipo" value="Pao">Pão</td>
+                    <td><input id="3" type="radio" name="tipo" value="Molho">Molho</td>
+                    <td><input id="4" type="radio" name="tipo" value="Salada">Salada</td>
                 </table>
                 Descrição: <input type="text" name="descricao" autocomplete="off"><br>
                 Preço: <input type="text" name="preco"><br>

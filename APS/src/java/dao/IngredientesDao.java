@@ -16,6 +16,58 @@ public class IngredientesDao extends UtilDao{
         return ingredientes;        
     }
     
+    public List<Ingredientes> listarPaes(){
+        
+        this.abreConexao();
+        
+        List<Ingredientes> paes;
+        paes = em.createQuery("SELECT i "
+                            + "FROM Ingredientes as i "
+                            + "WHERE i.tipo='Pao'").getResultList();
+        this.fechaConexao();
+        
+        return paes;        
+    }
+    
+    public List<Ingredientes> listarCarnes(){
+        
+        this.abreConexao();
+        
+        List<Ingredientes> carnes;
+        carnes = em.createQuery("SELECT i "
+                            + "FROM Ingredientes as i "
+                            + "WHERE i.tipo='Carne'").getResultList();
+        this.fechaConexao();
+        
+        return carnes;        
+    }
+    
+    public List<Ingredientes> listarSaladas(){
+        
+        this.abreConexao();
+        
+        List<Ingredientes> saladas;
+        saladas = em.createQuery("SELECT i "
+                            + "FROM Ingredientes as i "
+                            + "WHERE i.tipo='Salada'").getResultList();
+        this.fechaConexao();
+        
+        return saladas;        
+    }
+    
+    public List<Ingredientes> listarMolhos(){
+        
+        this.abreConexao();
+        
+        List<Ingredientes> molhos;
+        molhos = em.createQuery("SELECT i "
+                            + "FROM Ingredientes as i "
+                            + "WHERE i.tipo='Molho'").getResultList();
+        this.fechaConexao();
+        
+        return molhos;        
+    }
+    
     public Ingredientes buscarIngredienteId(int idIngredientes){
         this.abreConexao();
         

@@ -1,53 +1,65 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlet;
 
-import dao.PedidoDao;
-import entidade.Lanche;
+import dao.ClienteDao;
+import entidade.Cliente;
 import entidade.Login;
-import entidade.Pedido;
-import entidade.PedidoPK;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author USER
- */
-@WebServlet(name = "ServletPedido", urlPatterns = {"/ServletPedido"})
-public class ServletPedido extends HttpServlet {
+@WebServlet(name = "ServletLogin", urlPatterns = {"/ServletLogin"})
+public class ServletLogin extends HttpServlet {
 
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        Lanche l = new Lanche();
+        
+        String formUsuario = request.getParameter("usuario");
+        String formSenha = request.getParameter("senha");                
+        
+        ClienteDao cd = new ClienteDao();
+                
+        int tam = cd.listarCliente().size();
+        int idUsuario = 0;
+        
+        for (int i = 0; i < tam; i++) {
+            
+            if(formUsuario.equals(cd.listarCliente().get(i).getUsuario())){
+                idUsuario = cd.listarCliente().get(i).getIdUsuario();
+            }
+        }
+        
+        Cliente c = cd.buscarClienteId(idUsuario);
+        
+        RequestDispatcher rd = null;
+        
+        if(c.validarCliente(c, formUsuario, formSenha)){
+            
+            if(c.getFgAtivo() == true){               
+                
+                
+                rd = request.getRequestDispatcher("/lanche.jsp");
+                rd.forward(request, response);
+            }else{
+                rd = request.getRequestDispatcher("/homeAdm.jsp");
+                rd.forward(request, response);
+            }            
+        
+        }else{            
+             rd = request.getRequestDispatcher("/cadastro.jsp");
+            rd.forward(request, response);
+        } 
+        
         Login login = new Login();
-        
-        PedidoPK pk = new PedidoPK();
-        pk.setIdLanche(l.getIdLanche());
-        pk.setIdUsuario(login.getIdUsuario());
-        
-        Pedido p = new Pedido();
-        
-        p.setPedidoPK(pk);
-        p.setLanche(l);
-        p.setDtHoraPedido("15:02");
-        
-        
-        PedidoDao pedidoDao = new PedidoDao();
-        
-        pedidoDao.salvar(p);
-        
+        login.setIdUsuario(idUsuario);
+        login.setUsuario(formUsuario);
+        login.setSenha(formSenha);
+            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlet;
 
-import dao.PedidoDao;
-import entidade.Lanche;
-import entidade.Login;
-import entidade.Pedido;
-import entidade.PedidoPK;
+
+import dao.ClienteDao;
+import entidade.Cliente;
+import entidade.Endereco;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,36 +12,47 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author USER
- */
-@WebServlet(name = "ServletPedido", urlPatterns = {"/ServletPedido"})
-public class ServletPedido extends HttpServlet {
+@WebServlet(name = "ServletClientes", urlPatterns = {"/ServletClientes"})
+public class ServletCadastroCliente extends HttpServlet {
 
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        Lanche l = new Lanche();
-        Login login = new Login();
+        Cliente cliente = new Cliente();
         
-        PedidoPK pk = new PedidoPK();
-        pk.setIdLanche(l.getIdLanche());
-        pk.setIdUsuario(login.getIdUsuario());
+        cliente.setUsuario(request.getParameter("usuario"));
+        cliente.setSenha(request.getParameter("senha"));
+        cliente.setNome(request.getParameter("nome"));
+        cliente.setSobrenome(request.getParameter("sobrenome"));
+        cliente.setCpf(request.getParameter("cpf"));
+        cliente.setFgAtivo(true);
         
-        Pedido p = new Pedido();
-        
-        p.setPedidoPK(pk);
-        p.setLanche(l);
-        p.setDtHoraPedido("15:02");
+        Endereco endereco = new Endereco(request.getParameter("rua"), 
+                                        Integer.parseInt(request.getParameter("numero")),
+                                        request.getParameter("cep"));
         
         
-        PedidoDao pedidoDao = new PedidoDao();
+        cliente.setEndereco(endereco);  
         
-        pedidoDao.salvar(p);
         
+        
+        ClienteDao clienteDao = new ClienteDao();
+        clienteDao.salvar(cliente);
+        
+        
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ServletCliente</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Cliente Cadastrado com Sucesso</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

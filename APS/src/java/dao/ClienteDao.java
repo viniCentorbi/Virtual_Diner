@@ -16,7 +16,7 @@ public class ClienteDao extends UtilDao{
         return clientes;        
     }
     
-    public Cliente buscarIngredienteId(int idCliente){
+    public Cliente buscarClienteId(int idCliente){
         this.abreConexao();
         
         Cliente cliente = em.find(Cliente.class, idCliente);

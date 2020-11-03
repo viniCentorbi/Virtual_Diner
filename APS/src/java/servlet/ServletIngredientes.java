@@ -47,12 +47,18 @@ public class ServletIngredientes extends HttpServlet {
         
               
         //Pegando dados do Form
+        
         String descricao = request.getParameter("descricao");
         BigDecimal preco = new BigDecimal(request.getParameter("preco"));
         String dt_fab = request.getParameter("dt_fabricacao");
         String dt_val = request.getParameter("dt_validade");
         int estoque = Integer.parseInt(request.getParameter("estoque"));
-
+        
+         
+        String tipo = request.getParameter("tipo");
+        
+        
+        
         //Salvando os dados no ingrediente
         Ingredientes ingredientes = new Ingredientes();
         ingredientes.setDescricao(descricao);         
@@ -60,6 +66,7 @@ public class ServletIngredientes extends HttpServlet {
         ingredientes.setDtFabricacao(dt_fab);
         ingredientes.setDtValidade(dt_val);         
         ingredientes.setEstoque(estoque);
+        ingredientes.setTipo(tipo);
         
         //Salvando no Banco
         IngredientesDao ingredientesDao = new IngredientesDao();   

@@ -36,7 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Ingredientes.findByDtFabricacao", query = "SELECT i FROM Ingredientes i WHERE i.dtFabricacao = :dtFabricacao")
     , @NamedQuery(name = "Ingredientes.findByDtValidade", query = "SELECT i FROM Ingredientes i WHERE i.dtValidade = :dtValidade")
     , @NamedQuery(name = "Ingredientes.findByDescricao", query = "SELECT i FROM Ingredientes i WHERE i.descricao = :descricao")
-    , @NamedQuery(name = "Ingredientes.findByPreco", query = "SELECT i FROM Ingredientes i WHERE i.preco = :preco")})
+    , @NamedQuery(name = "Ingredientes.findByPreco", query = "SELECT i FROM Ingredientes i WHERE i.preco = :preco")
+    , @NamedQuery(name = "Ingredientes.findByTipo", query = "SELECT i FROM Ingredientes i WHERE i.tipo = :tipo")})
 public class Ingredientes implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCarne")
@@ -65,6 +66,8 @@ public class Ingredientes implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "preco")
     private BigDecimal preco;
+    @Column(name = "tipo")
+    private String tipo;
 
     public Ingredientes() {
     }
@@ -119,6 +122,14 @@ public class Ingredientes implements Serializable {
 
     public void setPreco(BigDecimal preco) {
         this.preco = preco;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     @Override
