@@ -15,17 +15,7 @@
     <body>
         <h2>Frita Miolos</h2>
 <div class="container" id="container">
-	<div class="form-container sign-up-container">
-		<form action="#">
-			<h1>Crie sua conta!</h1>
-			<span>Registre-se com suas informações pessoais.</span>
-			<input type="text" placeholder="Nome" />
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Senha" />
-			<button>Registrar</button>
-		</form>
-            
-	</div>
+	
 	<div class="form-container sign-in-container">
 		<form action="#">
 			<h1>Entrar</h1>
@@ -38,12 +28,6 @@
 	</div>
 	<div class="overlay-container">
 		<div class="overlay">
-			<div class="overlay-panel overlay-left">
-                                <img src="CheeseBurger.png" alt="Trulli" width="60" height="40">
-				<h1>Bem-vindo de volta!</h1>
-				<p>Para se manter conectado, faça login com seu e-mail e senha cadastrado.</p>
-				<button class="ghost" id="signIn">Entrar</button>
-			</div>
 			<div class="overlay-panel overlay-right">
                                 <img src="CheeseBurger.png" alt="Trulli" width="60" height="40">
 				<h1>Olá Amigo!</h1>
