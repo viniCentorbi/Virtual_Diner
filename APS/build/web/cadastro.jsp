@@ -11,6 +11,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="stylecadastro.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
+        <script>
+            function encriptarSenha(form) {
+                if (form.senha.value != '') {
+                    form.senha.value = CryptoJS.MD5(form.senha.value).toString();
+                }
+            }
+        </script>
         <title>Cadastro</title>
     </head>
     <body>
@@ -19,7 +28,7 @@
 	
 	<div class="form-container sign-in-container">
             
-            <form class="form" action="ServletClientes">
+            <form class="form" action="ServletClientes" onsubmit="encriptarSenha(this)">
                 <div class="section">
                     <div class="control-group">
                     Usuário <input class="form-usuario" type="text" name="usuario" autocomplete="off" placeholder="Usuário"><br>
