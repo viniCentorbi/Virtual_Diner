@@ -12,6 +12,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="stylelogin.css">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
+        <script>
+            function encriptarSenha(form) {
+                if (form.senha.value != '') {
+                    form.senha.value = CryptoJS.MD5(form.senha.value).toString();
+                }
+            }
+        </script>
+                
         <title>Login</title>
     </head>
     <body>
@@ -29,7 +40,7 @@
             
 	</div>
 	<div class="form-container sign-in-container">
-		<form action="ServletLogin" action="ServletLanche" method="post">
+		<form action="ServletLogin" action="ServletLanche" method="post" onsubmit="encriptarSenha(this)">
 			<h1>Entrar</h1>
 			<span>entre com sua conta.</span>
 			<input type="text" name="usuario" placeholder="Usuário" />
@@ -44,6 +55,8 @@
                         </table>
                         
 		</form>
+                        
+                
 	</div>
 	<div class="overlay-container">
 		<div class="overlay">

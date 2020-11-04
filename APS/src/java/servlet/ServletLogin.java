@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "ServletLogin", urlPatterns = {"/ServletLogin"})
 public class ServletLogin extends HttpServlet {
@@ -40,26 +41,27 @@ public class ServletLogin extends HttpServlet {
         
         if(c.validarCliente(c, formUsuario, formSenha)){
             
-            if(c.getFgAtivo() == true){               
-                
-                
+            if(c.getFgAtivo() == true){              
                 rd = request.getRequestDispatcher("/lanche.jsp");
                 rd.forward(request, response);
             }else{
                 rd = request.getRequestDispatcher("/homeAdm.jsp");
                 rd.forward(request, response);
-            }            
+            }  
+            
+            HttpSession session = request.getSession();            
+            
+            session.setAttribute("idUsuario", c.getIdUsuario());
+            session.setAttribute("usuario", formUsuario);
+            session.setAttribute("senha", formSenha);
+            
         
         }else{            
              rd = request.getRequestDispatcher("/cadastro.jsp");
             rd.forward(request, response);
         } 
         
-        Login login = new Login();
-        login.setIdUsuario(idUsuario);
-        login.setUsuario(formUsuario);
-        login.setSenha(formSenha);
-            
+                    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

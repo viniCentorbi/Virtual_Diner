@@ -40,17 +40,16 @@
                 
                 int ultEle = (l.listarLanche().size() - 1);
                 
-                Login login = new Login();
+                int idLanche = l.listarLanche().get(ultEle).getIdLanche();                
                 
-                int idLanche = l.listarLanche().get(ultEle).getIdLanche();
+                String strIdUsuario = String.valueOf(session.getAttribute("idUsuario"));
+                int idUsuario = Integer.parseInt(strIdUsuario);
                 
                 PedidoPK pk = new PedidoPK();
                 pk.setIdLanche(idLanche);
-                pk.setIdUsuario(login.getIdUsuario());
-                
+                pk.setIdUsuario(idUsuario);                
 
-                Pedido p = new Pedido();
-                
+                Pedido p = new Pedido();                
                 
                 BigDecimal precoPao = l.listarLanche().get(ultEle).getIdPao().getPreco();
                 BigDecimal precoCarne = l.listarLanche().get(ultEle).getIdCarne().getPreco();
@@ -76,11 +75,6 @@
                 p.setPrecoPedido(precoPedido);
              
                 PedidoDao pedidoDao = new PedidoDao();
-                
-                System.out.println(login.getUsuario());
-                
-                JOptionPane.showMessageDialog(null,login.getUsuario());
-                
                 pedidoDao.salvar(p);
             %>
         </div>
