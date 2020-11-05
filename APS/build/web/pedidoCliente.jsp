@@ -46,54 +46,13 @@
         <div>
             
             <%
-                IngredientesDao ingDao = new IngredientesDao();
-                
-                Pedido p = new Pedido(); 
-                
-                PedidoDao pDao = new PedidoDao();
                 
                 LancheDao l = new LancheDao();
-                
-                // Salvar o pedido ---------------------------------------------------------------------------------
-                
-                String strIdUsuario = String.valueOf(session.getAttribute("idUsuario"));                
-                int idUsuario = Integer.parseInt(strIdUsuario);
                 
                 int ultLanche = l.listarLanche().size() - 1;
                 
                 int idLanche = l.listarLanche().get(ultLanche).getIdLanche();
                 
-                
-                PedidoPK pk = new PedidoPK();
-                pk.setIdLanche(idLanche);
-                pk.setIdUsuario(idUsuario);                
-                
-                BigDecimal precoPao = l.listarLanche().get(ultLanche).getIdPao().getPreco();
-                BigDecimal precoCarne = l.listarLanche().get(ultLanche).getIdCarne().getPreco();
-                BigDecimal precoSalada = l.listarLanche().get(ultLanche).getIdSalada().getPreco();
-                BigDecimal precoMolho = l.listarLanche().get(ultLanche).getIdMolho().getPreco();
-                
-                
-                BigDecimal sum1 = precoPao.add(precoCarne);
-                BigDecimal sum2 = precoSalada.add(precoMolho);
-                
-                BigDecimal precoPedido = sum1.add(sum2);
-                
-                
-                Calendar data = Calendar.getInstance();
-                int horas = data.get(Calendar.HOUR_OF_DAY);
-                int minutos = data.get(Calendar.MINUTE);
-                
-                String strHora = String.valueOf(horas);
-                String strMinuto = String.valueOf(minutos);
-                
-                p.setDtHoraPedido(strHora+":"+strMinuto);
-                p.setPedidoPK(pk);
-                p.setPrecoPedido(precoPedido);             
-                
-                pDao.salvar(p);
-                
-                //-------------------------------------------------------------------------------------------------
                 // Exibir o pedido do Cliente ---------------------------------------------------------------------
                 
                 
@@ -101,14 +60,25 @@
                 String carne = l.buscarLancheId(idLanche).getIdCarne().getDescricao();
                 String salada = l.buscarLancheId(idLanche).getIdSalada().getDescricao();
                 String molho = l.buscarLancheId(idLanche).getIdMolho().getDescricao();
-                BigDecimal precoTotal = p.getPrecoPedido();
+                
+                BigDecimal precoPao = l.listarLanche().get(ultLanche).getIdPao().getPreco();
+                BigDecimal precoCarne = l.listarLanche().get(ultLanche).getIdCarne().getPreco();
+                BigDecimal precoSalada = l.listarLanche().get(ultLanche).getIdSalada().getPreco();
+                BigDecimal precoMolho = l.listarLanche().get(ultLanche).getIdMolho().getPreco();
+
+                BigDecimal sum1 = precoPao.add(precoCarne);
+                BigDecimal sum2 = precoSalada.add(precoMolho);
+
+                BigDecimal precoPedido = sum1.add(sum2);
+                
                 
                 //------------------------------------------------------------------------------------------------- 
 
             %>
                 
             <h1>Seu Pedido</h1>
-                
+            
+                            
             <table>
                 <tr>
                   <th>Pão</th>
@@ -124,12 +94,20 @@
                     <td><%=carne%></td>
                     <td><%=salada%></td>
                     <td><%=molho%></td>
-                    <td><%=precoTotal%></td>
+                    <td><%=precoPedido%></td>
                 </tr>                         
           
             </table> 
             
                 <br>
+                
+                <form action="ServletPedido" method="get">
+                    <button class="btnCad" type="submit" name="botao" value="salvar">Finalizar Pedido</button>
+                    <button class="btnCad" type="submit" name="botao" value="excluir">Cancelar Pedido</button>
+                    
+                </form>
+                
+                
             
             
         </div>

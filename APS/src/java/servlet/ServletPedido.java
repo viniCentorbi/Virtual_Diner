@@ -6,17 +6,23 @@
 package servlet;
 
 import dao.PedidoDao;
+import dao.IngredientesDao;
+import dao.LancheDao;
 import entidade.Lanche;
 import entidade.Login;
 import entidade.Pedido;
 import entidade.PedidoPK;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.util.Calendar;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,23 +36,72 @@ public class ServletPedido extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        Lanche l = new Lanche();
-        Login login = new Login();
         
-        PedidoPK pk = new PedidoPK();
-        pk.setIdLanche(l.getIdLanche());
-        pk.setIdUsuario(login.getIdUsuario());
+        String valorButton = request.getParameter("botao");        
         
-        Pedido p = new Pedido();
+        RequestDispatcher rd = null;
         
-        p.setPedidoPK(pk);
-        p.setLanche(l);
-        p.setDtHoraPedido("15:02");
+        if(valorButton.equals("salvar")){
+                
+            Pedido p = new Pedido(); 
+
+            PedidoDao pDao = new PedidoDao();
+
+            LancheDao l = new LancheDao();
+            
+            
+
+            HttpSession session = request.getSession(false);        
+
+            // Salvar o pedido ---------------------------------------------------------------------------------
+
+            String strIdUsuario = String.valueOf(session.getAttribute("idUsuario"));                
+            int idUsuario = Integer.parseInt(strIdUsuario);
+
+            int ultLanche = l.listarLanche().size() - 1;
+
+            int idLanche = l.listarLanche().get(ultLanche).getIdLanche();
+
+
+            PedidoPK pk = new PedidoPK();
+            pk.setIdLanche(idLanche);
+            pk.setIdUsuario(idUsuario);                
+
+            BigDecimal precoPao = l.listarLanche().get(ultLanche).getIdPao().getPreco();
+            BigDecimal precoCarne = l.listarLanche().get(ultLanche).getIdCarne().getPreco();
+            BigDecimal precoSalada = l.listarLanche().get(ultLanche).getIdSalada().getPreco();
+            BigDecimal precoMolho = l.listarLanche().get(ultLanche).getIdMolho().getPreco();
+
+
+            BigDecimal sum1 = precoPao.add(precoCarne);
+            BigDecimal sum2 = precoSalada.add(precoMolho);
+
+            BigDecimal precoPedido = sum1.add(sum2);
+
+
+            Calendar data = Calendar.getInstance();
+            int horas = data.get(Calendar.HOUR_OF_DAY);
+            int minutos = data.get(Calendar.MINUTE);
+
+            String strHora = String.valueOf(horas);
+            String strMinuto = String.valueOf(minutos);
+
+            p.setDtHoraPedido(strHora+":"+strMinuto);
+            p.setPedidoPK(pk);
+            p.setPrecoPedido(precoPedido);             
+
+            pDao.salvar(p);
+            
+            rd = request.getRequestDispatcher("/index.jsp");
+            rd.forward(request, response);
+        
+        }else{
+            
+            rd = request.getRequestDispatcher("/lanche.jsp");
+            rd.forward(request, response);
+        }
         
         
-        PedidoDao pedidoDao = new PedidoDao();
-        
-        pedidoDao.salvar(p);
         
     }
 

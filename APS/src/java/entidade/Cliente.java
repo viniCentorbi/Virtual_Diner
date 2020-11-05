@@ -170,8 +170,6 @@ public class Cliente{
     
     public boolean validarCliente(Cliente c, String usuario, String senha){
         
-       
-        
         return usuario.equals(c.getUsuario()) && senha.equals(c.getSenha());
         
     }
