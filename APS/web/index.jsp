@@ -31,7 +31,10 @@
     </label>
 
     <div class="content">
-      <h1>Aqui vai rodar a lanchonete</h1>
+        <center>
+            <img src="https://picsum.photos/200/300?t=1" alt="" class="pic">
+        </center>
+      
     </div>
   </section>
 </main>

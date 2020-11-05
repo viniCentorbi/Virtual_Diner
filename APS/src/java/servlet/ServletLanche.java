@@ -98,7 +98,7 @@ public class ServletLanche extends HttpServlet {
         ld.salvar(l);
         
         RequestDispatcher rd = null;
-        rd = request.getRequestDispatcher("/pedido.jsp");
+        rd = request.getRequestDispatcher("/pedidoCliente.jsp");
         rd.forward(request, response);
         
         

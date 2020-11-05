@@ -55,10 +55,10 @@ public final class ingredientes_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("        <div>\r\n");
       out.write("            <form action=\"ServletIngredientes\" method=\"get\">\r\n");
       out.write("                <table>\r\n");
-      out.write("                    <td><input type=\"radio\" name=\"tipo\" checked=\"on\">Carne</td>\r\n");
-      out.write("                    <td><input type=\"radio\" name=\"tipo\" >Pão</td>\r\n");
-      out.write("                    <td><input type=\"radio\" name=\"tipo\" >Molho</td>\r\n");
-      out.write("                    <td><input type=\"radio\" name=\"tipo\" >Salada</td>\r\n");
+      out.write("                    <td><input id=\"1\" type=\"radio\" name=\"tipo\" value=\"Carne\">Carne</td>\r\n");
+      out.write("                    <td><input id=\"2\" type=\"radio\" name=\"tipo\" value=\"Pao\">Pão</td>\r\n");
+      out.write("                    <td><input id=\"3\" type=\"radio\" name=\"tipo\" value=\"Molho\">Molho</td>\r\n");
+      out.write("                    <td><input id=\"4\" type=\"radio\" name=\"tipo\" value=\"Salada\">Salada</td>\r\n");
       out.write("                </table>\r\n");
       out.write("                Descrição: <input type=\"text\" name=\"descricao\" autocomplete=\"off\"><br>\r\n");
       out.write("                Preço: <input type=\"text\" name=\"preco\"><br>\r\n");
