@@ -51,27 +51,35 @@
                 
                 int ultLanche = l.listarLanche().size() - 1;
                 
-                int idLanche = l.listarLanche().get(ultLanche).getIdLanche();
+                int idLanche = l.listarLanche().get(ultLanche).getIdLanche();                
+                                
+                Ingredientes salada = l.buscarLancheId(idLanche).getIdSalada();
+                Ingredientes molho = l.buscarLancheId(idLanche).getIdMolho();
                 
-                // Exibir o pedido do Cliente ---------------------------------------------------------------------
-                
-                
+                // Exibir o pedido do Cliente ---------------------------------------------------------------------                
                 String pao = l.buscarLancheId(idLanche).getIdPao().getDescricao();
                 String carne = l.buscarLancheId(idLanche).getIdCarne().getDescricao();
-                String salada = l.buscarLancheId(idLanche).getIdSalada().getDescricao();
-                String molho = l.buscarLancheId(idLanche).getIdMolho().getDescricao();
+                String  molhoDesc = "Nenhum molho selecionado";
+                String saladaDesc = "Nenhuma salada selecionada";
+                
                 
                 BigDecimal precoPao = l.listarLanche().get(ultLanche).getIdPao().getPreco();
                 BigDecimal precoCarne = l.listarLanche().get(ultLanche).getIdCarne().getPreco();
-                BigDecimal precoSalada = l.listarLanche().get(ultLanche).getIdSalada().getPreco();
-                BigDecimal precoMolho = l.listarLanche().get(ultLanche).getIdMolho().getPreco();
-
-                BigDecimal sum1 = precoPao.add(precoCarne);
-                BigDecimal sum2 = precoSalada.add(precoMolho);
-
-                BigDecimal precoPedido = sum1.add(sum2);
                 
+                BigDecimal precoPedido = precoPao.add(precoCarne);
                 
+                BigDecimal precoTotal = null;
+                
+                if(molho != null){
+                    BigDecimal precoMolho = l.listarLanche().get(ultLanche).getIdMolho().getPreco();
+                    precoTotal = precoPedido.add(precoMolho);
+                    molhoDesc = l.buscarLancheId(idLanche).getIdMolho().getDescricao();
+                }
+                if(salada != null){
+                    BigDecimal precoSalada = l.listarLanche().get(ultLanche).getIdSalada().getPreco();
+                    precoTotal = precoPedido.add(precoSalada);
+                    saladaDesc = l.buscarLancheId(idLanche).getIdSalada().getDescricao();
+                } 
                 //------------------------------------------------------------------------------------------------- 
 
             %>
@@ -92,9 +100,9 @@
                 <tr>
                     <td><%=pao%></td>
                     <td><%=carne%></td>
-                    <td><%=salada%></td>
-                    <td><%=molho%></td>
-                    <td><%=precoPedido%></td>
+                    <td><%=saladaDesc%></td>
+                    <td><%=molhoDesc%></td>
+                    <td><%=precoTotal%></td>
                 </tr>                         
           
             </table> 

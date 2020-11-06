@@ -23,7 +23,8 @@ public class IngredientesDao extends UtilDao{
         List<Ingredientes> paes;
         paes = em.createQuery("SELECT i "
                             + "FROM Ingredientes as i "
-                            + "WHERE i.tipo='Pao'").getResultList();
+                            + "WHERE i.tipo='Pao'"
+                            + "AND i.estoque > 0").getResultList();
         this.fechaConexao();
         
         return paes;        
@@ -36,7 +37,8 @@ public class IngredientesDao extends UtilDao{
         List<Ingredientes> carnes;
         carnes = em.createQuery("SELECT i "
                             + "FROM Ingredientes as i "
-                            + "WHERE i.tipo='Carne'").getResultList();
+                            + "WHERE i.tipo='Carne'"
+                            + "AND i.estoque > 0").getResultList();
         this.fechaConexao();
         
         return carnes;        
@@ -49,7 +51,8 @@ public class IngredientesDao extends UtilDao{
         List<Ingredientes> saladas;
         saladas = em.createQuery("SELECT i "
                             + "FROM Ingredientes as i "
-                            + "WHERE i.tipo='Salada'").getResultList();
+                            + "WHERE i.tipo='Salada'"
+                            + "AND i.estoque > 0").getResultList();
         this.fechaConexao();
         
         return saladas;        
@@ -62,7 +65,8 @@ public class IngredientesDao extends UtilDao{
         List<Ingredientes> molhos;
         molhos = em.createQuery("SELECT i "
                             + "FROM Ingredientes as i "
-                            + "WHERE i.tipo='Molho'").getResultList();
+                            + "WHERE i.tipo='Molho'"
+                            + "AND i.estoque > 0").getResultList();
         this.fechaConexao();
         
         return molhos;        

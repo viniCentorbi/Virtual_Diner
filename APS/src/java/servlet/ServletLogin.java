@@ -70,7 +70,7 @@ public class ServletLogin extends HttpServlet {
             } 
             
         }else{
-            rd = request.getRequestDispatcher("/cadastro.jsp");
+            rd = request.getRequestDispatcher("/cadastro.jsp"); //provisório
             rd.forward(request, response);
             
         }

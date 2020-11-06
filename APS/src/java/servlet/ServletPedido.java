@@ -6,14 +6,11 @@
 package servlet;
 
 import dao.PedidoDao;
-import dao.IngredientesDao;
 import dao.LancheDao;
-import entidade.Lanche;
-import entidade.Login;
+import entidade.Ingredientes;
 import entidade.Pedido;
 import entidade.PedidoPK;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import javax.servlet.RequestDispatcher;
@@ -61,23 +58,30 @@ public class ServletPedido extends HttpServlet {
             int ultLanche = l.listarLanche().size() - 1;
 
             int idLanche = l.listarLanche().get(ultLanche).getIdLanche();
-
+            
+            Ingredientes salada = l.buscarLancheId(idLanche).getIdSalada();
+            Ingredientes molho = l.buscarLancheId(idLanche).getIdMolho();
+            
 
             PedidoPK pk = new PedidoPK();
             pk.setIdLanche(idLanche);
             pk.setIdUsuario(idUsuario);                
-
+            
+            
             BigDecimal precoPao = l.listarLanche().get(ultLanche).getIdPao().getPreco();
             BigDecimal precoCarne = l.listarLanche().get(ultLanche).getIdCarne().getPreco();
-            BigDecimal precoSalada = l.listarLanche().get(ultLanche).getIdSalada().getPreco();
-            BigDecimal precoMolho = l.listarLanche().get(ultLanche).getIdMolho().getPreco();
-
-
-            BigDecimal sum1 = precoPao.add(precoCarne);
-            BigDecimal sum2 = precoSalada.add(precoMolho);
-
-            BigDecimal precoPedido = sum1.add(sum2);
-
+            
+            BigDecimal precoPedido = precoPao.add(precoCarne);
+            BigDecimal precoTotal = null;
+            
+            if(molho != null){
+                BigDecimal precoMolho = l.listarLanche().get(ultLanche).getIdMolho().getPreco();
+                precoTotal = precoPedido.add(precoMolho);
+            }
+            if(salada != null){
+                BigDecimal precoSalada = l.listarLanche().get(ultLanche).getIdSalada().getPreco();
+                precoTotal = precoPedido.add(precoSalada);
+            }
 
             Calendar data = Calendar.getInstance();
             int horas = data.get(Calendar.HOUR_OF_DAY);
@@ -88,7 +92,7 @@ public class ServletPedido extends HttpServlet {
 
             p.setDtHoraPedido(strHora+":"+strMinuto);
             p.setPedidoPK(pk);
-            p.setPrecoPedido(precoPedido);             
+            p.setPrecoPedido(precoTotal);             
 
             pDao.salvar(p);
             
@@ -100,9 +104,6 @@ public class ServletPedido extends HttpServlet {
             rd = request.getRequestDispatcher("/lanche.jsp");
             rd.forward(request, response);
         }
-        
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
