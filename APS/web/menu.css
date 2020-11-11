@@ -8,6 +8,19 @@ body, html {
   font-family: 'Open Sans', sans-serif;
 }
 
+  .carousel-inner img {
+      width: 100%;
+      margin: auto;
+  }
+  .carousel-caption h3 {
+      color: #fff !important;
+  }
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+  
 main {
   height: 100%;
   width: 100%;

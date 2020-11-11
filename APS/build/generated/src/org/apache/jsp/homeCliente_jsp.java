@@ -76,12 +76,9 @@ public final class homeCliente_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <div class=\"content\">\r\n");
       out.write("        <div class=\"Carousel\">\r\n");
       out.write("            <figure>\r\n");
-      out.write("      <span  class=\"trs next span-carousel\"></span>\r\n");
-      out.write("      <span  class=\"trs prev span-carousel\"></span>\r\n");
       out.write("\r\n");
       out.write("      <div id=\"slider\">\r\n");
-      out.write("        <a  href=\"#\" class=\"trs a-carousel\"><img src=\"testiculodeboi.jpg\" alt=\"hamburger testiculo de boi\" /></a>\r\n");
-      out.write("        <a  href=\"#\" class=\"trs a-carousel\"><img src=\"alface.jpg\" alt=\"Alface do Cemitério\" /></a>\r\n");
+      out.write("          <a  href=\"#\" class=\"trs a-carousel\"><img src=\"testiculodeboi.jpg\" alt=\" Novidade da Semana : Hamburger com molho de testiculo de boi\" /></a>\r\n");
       out.write("      </div>\r\n");
       out.write("\r\n");
       out.write("      <figcaption></figcaption>\r\n");
