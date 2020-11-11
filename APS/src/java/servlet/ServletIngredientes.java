@@ -7,11 +7,9 @@ package servlet;
 
 import dao.IngredientesDao;
 import entidade.Ingredientes;
-import entidade.Conversor;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.math.BigDecimal;
-import java.util.Date;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,56 +35,77 @@ public class ServletIngredientes extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+       
+        String valorButton = request.getParameter("botao"); 
+        
+        IngredientesDao ingredientesDao = new IngredientesDao(); 
         
         
-        
-        /*
-        Primeiro pega os dados do form, instancia um objeto ingrediente, depois instancia um novo objeto
-        com os dados do ingrediente para converter o necessário. Porém não está funcionando.
-        */
-        
-              
         //Pegando dados do Form
-        
+        int idIngrediente = Integer.parseInt(request.getParameter("idIngrediente"));
         String descricao = request.getParameter("descricao");
         BigDecimal preco = new BigDecimal(request.getParameter("preco"));
         String dt_fab = request.getParameter("dt_fabricacao");
         String dt_val = request.getParameter("dt_validade");
         int estoque = Integer.parseInt(request.getParameter("estoque"));
+        String tipo = request.getParameter("dt_validade");
         
-         
-        String tipo = request.getParameter("tipo");
-        
-        
-        
-        //Salvando os dados no ingrediente
-        Ingredientes ingredientes = new Ingredientes();
-        ingredientes.setDescricao(descricao);         
-        ingredientes.setPreco(preco);        
-        ingredientes.setDtFabricacao(dt_fab);
-        ingredientes.setDtValidade(dt_val);         
-        ingredientes.setEstoque(estoque);
-        ingredientes.setTipo(tipo);
-        
-        //Salvando no Banco
-        IngredientesDao ingredientesDao = new IngredientesDao();   
-        ingredientesDao.salvar(ingredientes);  
+        boolean ingredienteExiste = true;
         
        
-             
         
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletIngredientes</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServletIngredientes at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        Ingredientes ingProcurado = ingredientesDao.buscarIngredienteId(idIngrediente);
+        
+            
+        if(ingProcurado != null){            
+          ingredienteExiste = true;            
+
+        }else{
+            ingredienteExiste = false;
         }
+            
+               
+        
+        
+        if(valorButton.equals("salvar") && ingredienteExiste == true){
+            
+            Ingredientes ingredientesSalvar = new Ingredientes();
+            //Salvando os dados no ingrediente
+            ingredientesSalvar.setDescricao(descricao);         
+            ingredientesSalvar.setPreco(preco);        
+            ingredientesSalvar.setDtFabricacao(dt_fab);
+            ingredientesSalvar.setDtValidade(dt_val);         
+            ingredientesSalvar.setEstoque(estoque);
+            ingredientesSalvar.setTipo(tipo);
+            
+            //Salvando no Banco              
+            ingredientesDao.salvar(ingredientesSalvar);
+            
+        }else if (valorButton.equals("alterar") && ingredienteExiste == true){
+                
+            Ingredientes ingredientesAlterar = ingProcurado;
+            //Salvando os dados no ingrediente                  
+            ingredientesAlterar.setPreco(preco);       
+            ingredientesAlterar.setEstoque(estoque);            
+            
+            //Alterando no Banco  
+            ingredientesDao.alterar(ingredientesAlterar);
+            
+        }else if (valorButton.equals("excluir") && ingredienteExiste == true){
+            Ingredientes ingredientesExcluir = ingProcurado;             
+            
+            //Excluindo no Banco  
+            ingredientesDao.excluir(ingredientesExcluir);
+            
+        }else{
+            
+            RequestDispatcher rd = null;
+            rd = request.getRequestDispatcher("/homeAdm.jsp");
+            rd.forward(request, response);
+            
+        }
+
+             
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

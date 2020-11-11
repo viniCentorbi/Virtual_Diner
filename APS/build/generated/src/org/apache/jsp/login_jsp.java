@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import dao.ClienteDao;
 
 public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -45,6 +46,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
@@ -58,6 +60,11 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                if (form.senha.value != '') {\r\n");
       out.write("                    form.senha.value = CryptoJS.MD5(form.senha.value).toString();\r\n");
       out.write("                }\r\n");
+      out.write("            }\r\n");
+      out.write("        </script>\r\n");
+      out.write("        <script>\r\n");
+      out.write("            function myFunction() {\r\n");
+      out.write("              alert(location.hostname);\r\n");
       out.write("            }\r\n");
       out.write("        </script>\r\n");
       out.write("                \r\n");
@@ -78,21 +85,56 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            \r\n");
       out.write("\t</div>\r\n");
       out.write("\t<div class=\"form-container sign-in-container\">\r\n");
-      out.write("\t\t<form action=\"ServletLogin\" action=\"ServletLanche\" method=\"post\" onsubmit=\"encriptarSenha(this)\">\r\n");
-      out.write("\t\t\t<h1>Entrar</h1>\r\n");
-      out.write("\t\t\t<span>entre com sua conta.</span>\r\n");
-      out.write("\t\t\t<input type=\"text\" name=\"usuario\" placeholder=\"Usuário\" />\r\n");
-      out.write("\t\t\t<input type=\"password\" name=\"senha\" placeholder=\"Senha\" />\r\n");
-      out.write("\t\t\t<a href=\"#\">Perdeu sua senha? problema seu</a>\r\n");
-      out.write("\t\t\t\r\n");
-      out.write("                        ");
+      out.write("            <form action=\"ServletLogin\" action=\"ServletLanche\" method=\"post\" onsubmit=\"encriptarSenha(this)\">\r\n");
+      out.write("                    <h1>Entrar</h1>\r\n");
+      out.write("                    <span>entre com sua conta.</span>\r\n");
+      out.write("                    <input type=\"text\" name=\"usuario\" placeholder=\"Usuário\" required />\r\n");
+      out.write("                    <input type=\"password\" name=\"senha\" placeholder=\"Senha\" required/>\r\n");
+      out.write("                    <a href=\"#\">Perdeu sua senha? problema seu</a>\r\n");
       out.write("\r\n");
-      out.write("                        <table>\r\n");
-      out.write("                            <td><input type=\"submit\" name=\"logar\" value=\"Logar\"></td>                            \r\n");
-      out.write("                        </table>\r\n");
-      out.write("                        \r\n");
-      out.write("\t\t</form>\r\n");
-      out.write("                        \r\n");
+      out.write("                    <table>\r\n");
+      out.write("                        <td><input type=\"submit\" name=\"logar\" value=\"Logar\"></td>                            \r\n");
+      out.write("                    </table>\r\n");
+      out.write("\r\n");
+      out.write("            </form>\r\n");
+      out.write("                       \r\n");
+      out.write("            ");
+
+                String usuario = request.getParameter("usuario");
+                
+                ClienteDao cd = new ClienteDao();
+                
+                int tam = cd.listarCliente().size();
+                
+                boolean userExist = true;
+
+                
+                for (int i = 0; i < tam; i++) {
+
+                    if(usuario.equals(cd.listarCliente().get(i).getUsuario())){
+                        userExist = true;
+                        break;                        
+                    }else{
+                        userExist = false;
+                    }
+                }
+            
+      out.write("\r\n");
+      out.write("            ");
+
+                 if(userExist = false){               
+                
+            
+      out.write("\r\n");
+      out.write("            \r\n");
+      out.write("            myFunction();\r\n");
+      out.write("            ");
+
+                }              
+                
+            
+      out.write("\r\n");
+      out.write("            \r\n");
       out.write("                \r\n");
       out.write("\t</div>\r\n");
       out.write("\t<div class=\"overlay-container\">\r\n");

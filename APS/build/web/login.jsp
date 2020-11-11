@@ -5,6 +5,7 @@
 --%>
 
 
+<%@page import="dao.ClienteDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,19 +15,14 @@
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
-        <script>
-            function encriptarSenha(form) {
-                if (form.senha.value != '') {
-                    form.senha.value = CryptoJS.MD5(form.senha.value).toString();
-                }
-            }
-        </script>
+        
                 
         <title>Login</title>
     </head>
     <body>
+        
         <h2>Frita Miolos</h2>
-<div class="container" id="container">
+        <div class="container" id="container">
 	<div class="form-container sign-up-container">
 		<form action="#">
 			<h1>Crie sua conta!</h1>
@@ -39,22 +35,22 @@
             
 	</div>
 	<div class="form-container sign-in-container">
-		<form action="ServletLogin" action="ServletLanche" method="post" onsubmit="encriptarSenha(this)">
-			<h1>Entrar</h1>
-			<span>entre com sua conta.</span>
-			<input type="text" name="usuario" placeholder="Usuário" />
-			<input type="password" name="senha" placeholder="Senha" />
-			<a href="#">Perdeu sua senha? problema seu</a>
-			
-                        <%-- 
-                        <button type="button" onclick="location.href='index.jsp';">Entrar</button>
-                        --%>
-                        <table>
-                            <td><input type="submit" name="logar" value="Logar"></td>                            
-                        </table>
-                        
-		</form>
-                        
+            <form action="ServletLogin" action="ServletLanche" method="post" onsubmit="encriptarSenha(this)">
+                    <h1>Entrar</h1>
+                    <span>entre com sua conta.</span>
+                    <input type="text" name="usuario" placeholder="Usuário" required />
+                    <input type="password" name="senha" placeholder="Senha" required/>
+                    <a href="#">Perdeu sua senha? problema seu</a>
+
+                    <table>
+                        <td><input type="submit" name="logar" value="Logar" onclick="validaUsuario(request.getP)"></td>                            
+                    </table>
+
+            </form>
+                       
+            
+            
+            
                 
 	</div>
 	<div class="overlay-container">

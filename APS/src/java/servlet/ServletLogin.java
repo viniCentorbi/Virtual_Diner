@@ -3,6 +3,7 @@ package servlet;
 import dao.ClienteDao;
 import entidade.Cliente;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -67,10 +68,13 @@ public class ServletLogin extends HttpServlet {
                 rd = request.getRequestDispatcher("/cadastro.jsp");
                 rd.forward(request, response);
                 
+                
+                
             } 
             
         }else{
-            rd = request.getRequestDispatcher("/cadastro.jsp"); //provisório
+            
+            rd = request.getRequestDispatcher("/cadastro.jsp");
             rd.forward(request, response);
             
         }

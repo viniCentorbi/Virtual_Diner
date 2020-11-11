@@ -31,13 +31,13 @@
             <form class="form" action="ServletClientes" onsubmit="encriptarSenha(this)">
                 <div class="section">
                     <div class="control-group">
-                    Usuário <input class="form-usuario" type="text" name="usuario" autocomplete="off" placeholder="Usuário"><br>
-                    Senha <input class="form-senha" type="password" name="senha" autocomplete="off" placeholder="Senha"><br>
+                        Usuário <input class="form-usuario" type="text" name="usuario" autocomplete="off" placeholder="Usuário" required><br>
+                    Senha <input class="form-senha" type="password" name="senha" autocomplete="off" placeholder="Senha" required><br>
                     </div>
 
                 <div class="control-group">
-                    Nome <input class="form-nome" type="text" name="nome" autocomplete="off" placeholder="Nome"><br>
-                    Sobrenome <input class="form-sobrenome" type="text" name="sobrenome" autocomplete="off" placeholder="Sobrenome"><br>
+                    Nome <input class="form-nome" type="text" name="nome" autocomplete="off" placeholder="Nome" required> <br>
+                    Sobrenome <input class="form-sobrenome" type="text" name="sobrenome" autocomplete="off" placeholder="Sobrenome" required><br>
                     <button class="btnCancelar" type="button" onclick="location.href='login.jsp';">Cancelar</button>
                 </div>
                     
@@ -45,14 +45,14 @@
 
                 <div class="section">
                  <div class="control-group">
-                    CPF <input type="text" id="cpf" name="cpf" class="form-cpf" autocomplete="0ff"><br>
-                    Rua <input class="form-rua" type="text" name="rua" autocomplete="off" placeholder="Rua"><br>
-                    Número <input class="form-numero" type="text" name="numero" autocomplete="off" placeholder="Número"><br>
-                    CEP <input class="form-cep" type="text" name="cep" autocomplete="off"  placeholder="CEP"><br>
+                    CPF <input type="text" id="cpf" name="cpf" class="form-cpf" autocomplete="0ff" required><br>
+                    Rua <input class="form-rua" type="text" name="rua" autocomplete="off" placeholder="Rua" required><br>
+                    Número <input class="form-numero" type="text" name="numero" autocomplete="off" placeholder="Número" required><br>
+                    CEP <input class="form-cep" type="text" name="cep" autocomplete="off"  placeholder="CEP" required><br>
                     
                     
                    
-                    <button class="btnCad" type="submit" onclick="location.href='index.jsp';">Cadastrar</button>
+                    <button class="btnCad" type="submit">Cadastrar</button>
 
                 </div>
                 </div>
