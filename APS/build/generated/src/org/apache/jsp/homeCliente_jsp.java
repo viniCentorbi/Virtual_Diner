@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class homeAdm_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class homeCliente_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -48,7 +48,7 @@ public final class homeAdm_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\r\n");
       out.write("        <head>\r\n");
       out.write("            <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
-      out.write("            <title>Home Administrador</title>\r\n");
+      out.write("            <title>Home Cliente</title>\r\n");
       out.write("            <link rel=\"stylesheet\" type=\"text/css\" href=\"menu.css\"> \r\n");
       out.write("            <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\"> \r\n");
       out.write("            <link rel=\"stylesheet\" href=\"//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css\">\r\n");
@@ -58,16 +58,10 @@ public final class homeAdm_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  <aside>\r\n");
       out.write("    <ul class=\"asideList\">\r\n");
       out.write("      <li><a href=\"\" class=\"asideAnchor\">Inicio</a></li>\r\n");
-      out.write("      <li><a href=\"homeCliente.jsp\" class=\"asideAnchor\">Relatório</a></li>\r\n");
-      out.write("      <li><a href=\"homeCliente.jsp\" class=\"asideAnchor\">Pedidos</a></li>\r\n");
-      out.write("      \r\n");
-      out.write("          <li class=\"asideAnchor2\">Ingredientes</li>\r\n");
-      out.write("      <ul class=\"brunodatrabalho\">\r\n");
-      out.write("       <li><a href=\"\" class=\"asideAnchor\"> Cadastrar</a></li>\r\n");
-      out.write("        <li><a href=\"\" class=\"asideAnchor\"> Exibir</a></li>\r\n");
-      out.write("      </ul>\r\n");
-      out.write("          <ul class=\"brunodatrabalho2\">\r\n");
-      out.write("      <li><a href=\"login.jsp\" class=\"asideAnchor\">Logout</a></li>            \r\n");
+      out.write("      <li><a href=\"homeCliente.jsp\" class=\"asideAnchor\">Montar Lanche</a></li>\r\n");
+      out.write("      <li><a href=\"homeCliente.jsp\" class=\"asideAnchor\">Ajuda</a></li>\r\n");
+      out.write("          <ul style=\"margin-top: 110%;\" class=\"brunodatrabalho2\">\r\n");
+      out.write("      <li><a  href=\"login.jsp\" class=\"asideAnchor\">Logout</a></li>            \r\n");
       out.write("          </ul>\r\n");
       out.write("    </ul>\r\n");
       out.write("  </aside>\r\n");
@@ -81,8 +75,17 @@ public final class homeAdm_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("    <div class=\"content\">\r\n");
       out.write("        <div class=\"Carousel\">\r\n");
-      out.write("            <h1>Home do Admin</h1>\r\n");
+      out.write("            <figure>\r\n");
+      out.write("      <span  class=\"trs next span-carousel\"></span>\r\n");
+      out.write("      <span  class=\"trs prev span-carousel\"></span>\r\n");
+      out.write("\r\n");
+      out.write("      <div id=\"slider\">\r\n");
+      out.write("        <a  href=\"#\" class=\"trs a-carousel\"><img src=\"testiculodeboi.jpg\" alt=\"hamburger testiculo de boi\" /></a>\r\n");
+      out.write("        <a  href=\"#\" class=\"trs a-carousel\"><img src=\"alface.jpg\" alt=\"Alface do Cemitério\" /></a>\r\n");
       out.write("      </div>\r\n");
+      out.write("\r\n");
+      out.write("      <figcaption></figcaption>\r\n");
+      out.write("    </figure>\r\n");
       out.write("        </div>\r\n");
       out.write("        \r\n");
       out.write("  </section>\r\n");
