@@ -5,7 +5,6 @@ import dao.ClienteDao;
 import entidade.Cliente;
 import entidade.Endereco;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ServletClientes", urlPatterns = {"/ServletClientes"})
+@WebServlet(name = "ServletCadastroCliente", urlPatterns = {"/ServletCadastroCliente"})
 public class ServletCadastroCliente extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -31,45 +30,56 @@ public class ServletCadastroCliente extends HttpServlet {
         
         int tam = clienteDao.listarCliente().size();
         
+        boolean usuarioExiste = false;
+        boolean cpfExiste = false;
         
         for (int i = 0; i < tam; i++) {
             if(usuario.equals(clienteDao.listarCliente().get(i).getUsuario())){
                 //Exibir algum tipo de mensagem
+                usuarioExiste = true;
+                request.setAttribute("mensagem", "Usuário já cadastrado!");
                 
-                try (PrintWriter out = response.getWriter()) { // Alternativa provisória
-            
-                    out.println("<!DOCTYPE html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<title>Mensagem de Erro</title>");            
-                    out.println("</head>");
-                    out.println("<body>");
-                    out.println("<h1>Usuário já existe</h1>");
-                    out.println("</body>");
-                    out.println("</html>");
-                }
+                RequestDispatcher rd = null;
+                rd = request.getRequestDispatcher("/cadastro.jsp");
+                rd.forward(request, response);
+                
+                
+            }
+            if(cpf.equals(clienteDao.listarCliente().get(i).getCpf())){
+                //Exibir algum tipo de mensagem
+                
+                cpfExiste = true;
+                request.setAttribute("mensagem", "Cpf já cadastrado!");
+               
+                RequestDispatcher rd = null;
+                rd = request.getRequestDispatcher("/cadastro.jsp");
+                rd.forward(request, response);
             }
         }
         
-        cliente.setUsuario(usuario);
-        cliente.setSenha(senha);
-        cliente.setNome(nome);
-        cliente.setSobrenome(sobrenome);
-        cliente.setCpf(cpf);
-        cliente.setFgAtivo(true);
-        
-        Endereco endereco = new Endereco(request.getParameter("rua"), 
-                                        Integer.parseInt(request.getParameter("numero")),
-                                        request.getParameter("cep"));
-        
-        
-        cliente.setEndereco(endereco);  
+        if(!(usuarioExiste && cpfExiste)){
+            cliente.setUsuario(usuario);
+            cliente.setSenha(senha);
+            cliente.setNome(nome);
+            cliente.setSobrenome(sobrenome);
+            cliente.setCpf(cpf);
+            cliente.setFgAtivo(true);
 
-        clienteDao.salvar(cliente);
+            Endereco endereco = new Endereco(request.getParameter("rua"), 
+                                            Integer.parseInt(request.getParameter("numero")),
+                                            request.getParameter("cep"));
+
+
+            cliente.setEndereco(endereco);  
+
+            clienteDao.salvar(cliente);
+
+            RequestDispatcher rd = null;
+            rd = request.getRequestDispatcher("/login.jsp");
+            rd.forward(request, response);
+        }
         
-        RequestDispatcher rd = null;
-        rd = request.getRequestDispatcher("/login.jsp");
-        rd.forward(request, response);
+        
         
     }
 

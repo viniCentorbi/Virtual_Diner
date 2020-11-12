@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import entidade.Cliente;
 import dao.ClienteDao;
 
 public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
@@ -47,32 +48,34 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"stylelogin.css\">\r\n");
       out.write("        \r\n");
+      out.write("                \r\n");
       out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js\"></script>\r\n");
       out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js\"></script>\r\n");
+      out.write("        \r\n");
       out.write("        <script>\r\n");
       out.write("            function encriptarSenha(form) {\r\n");
       out.write("                if (form.senha.value != '') {\r\n");
       out.write("                    form.senha.value = CryptoJS.MD5(form.senha.value).toString();\r\n");
       out.write("                }\r\n");
       out.write("            }\r\n");
+      out.write("                        \r\n");
       out.write("        </script>\r\n");
-      out.write("        <script>\r\n");
-      out.write("            function myFunction() {\r\n");
-      out.write("              alert(location.hostname);\r\n");
-      out.write("            }\r\n");
-      out.write("        </script>\r\n");
+      out.write("        \r\n");
       out.write("                \r\n");
       out.write("        <title>Login</title>\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
+      out.write("        \r\n");
       out.write("        <h2>Frita Miolos</h2>\r\n");
-      out.write("<div class=\"container\" id=\"container\">\r\n");
+      out.write("        <div class=\"container\" id=\"container\">\r\n");
       out.write("\t<div class=\"form-container sign-up-container\">\r\n");
       out.write("\t\t<form action=\"#\">\r\n");
       out.write("\t\t\t<h1>Crie sua conta!</h1>\r\n");
@@ -85,55 +88,23 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            \r\n");
       out.write("\t</div>\r\n");
       out.write("\t<div class=\"form-container sign-in-container\">\r\n");
-      out.write("            <form action=\"ServletLogin\" action=\"ServletLanche\" method=\"post\" onsubmit=\"encriptarSenha(this)\">\r\n");
+      out.write("            <form class=\"form\" action=\"ServletLogin\" method=\"post\" onsubmit=\"encriptarSenha(this);validacao(this)\">\r\n");
       out.write("                    <h1>Entrar</h1>\r\n");
       out.write("                    <span>entre com sua conta.</span>\r\n");
-      out.write("                    <input type=\"text\" name=\"usuario\" placeholder=\"Usuário\" required />\r\n");
-      out.write("                    <input type=\"password\" name=\"senha\" placeholder=\"Senha\" required/>\r\n");
+      out.write("                    <input type=\"text\" name=\"usuario\" placeholder=\"Usuário\" required autocomplete=\"off\" />\r\n");
+      out.write("                    <input type=\"password\" name=\"senha\" placeholder=\"Senha\" required autocomplete=\"off\"/>\r\n");
       out.write("                    <a href=\"#\">Perdeu sua senha? problema seu</a>\r\n");
       out.write("\r\n");
       out.write("                    <table>\r\n");
-      out.write("                        <td><input type=\"submit\" name=\"logar\" value=\"Logar\"></td>                            \r\n");
+      out.write("                        <td><input type=\"submit\" name=\"logar\" value=\"Logar\" onclick=\"validaUsuario(request.getP)\"></td>                            \r\n");
       out.write("                    </table>\r\n");
+      out.write("                    <br>\r\n");
+      out.write("                    <h2>Teste</h2>\r\n");
       out.write("\r\n");
       out.write("            </form>\r\n");
       out.write("                       \r\n");
-      out.write("            ");
-
-                String usuario = request.getParameter("usuario");
-                
-                ClienteDao cd = new ClienteDao();
-                
-                int tam = cd.listarCliente().size();
-                
-                boolean userExist = true;
-
-                
-                for (int i = 0; i < tam; i++) {
-
-                    if(usuario.equals(cd.listarCliente().get(i).getUsuario())){
-                        userExist = true;
-                        break;                        
-                    }else{
-                        userExist = false;
-                    }
-                }
-            
-      out.write("\r\n");
-      out.write("            ");
-
-                 if(userExist = false){               
-                
-            
-      out.write("\r\n");
       out.write("            \r\n");
-      out.write("            myFunction();\r\n");
-      out.write("            ");
-
-                }              
-                
-            
-      out.write("\r\n");
+      out.write("            \r\n");
       out.write("            \r\n");
       out.write("                \r\n");
       out.write("\t</div>\r\n");

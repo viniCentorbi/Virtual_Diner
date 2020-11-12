@@ -17,9 +17,18 @@
             function encriptarSenha(form) {
                 if (form.senha.value != '') {
                     form.senha.value = CryptoJS.MD5(form.senha.value).toString();
+                    
                 }
             }
         </script>
+        
+        <style>
+            .mensagemErro{
+                color: red;
+                text-align: right;
+            }
+        </style>
+        
         <title>Cadastro</title>
     </head>
     <body>
@@ -28,17 +37,30 @@
 	
 	<div class="form-container sign-in-container">
             
-            <form class="form" action="ServletClientes" onsubmit="encriptarSenha(this)">
+            <form class="form" action="ServletCadastroCliente" method="post" onsubmit="encriptarSenha(this)">
                 <div class="section">
                     <div class="control-group">
                         Usuário <input class="form-usuario" type="text" name="usuario" autocomplete="off" placeholder="Usuário" required><br>
-                    Senha <input class="form-senha" type="password" name="senha" autocomplete="off" placeholder="Senha" required><br>
+                        Senha <input class="form-senha" type="password" name="senha" autocomplete="off" placeholder="Senha" required><br>
                     </div>
 
                 <div class="control-group">
                     Nome <input class="form-nome" type="text" name="nome" autocomplete="off" placeholder="Nome" required> <br>
                     Sobrenome <input class="form-sobrenome" type="text" name="sobrenome" autocomplete="off" placeholder="Sobrenome" required><br>
                     <button class="btnCancelar" type="button" onclick="location.href='login.jsp';">Cancelar</button>
+                    
+                        <p class="mensagemErro">
+                        
+                        <%
+                            String mensagem = (String) request.getAttribute("mensagem");
+                            
+                            if(mensagem != null){
+                                out.print(mensagem);
+                            }
+                        %>
+                        
+                        </p>
+                    
                 </div>
                     
                 </div>

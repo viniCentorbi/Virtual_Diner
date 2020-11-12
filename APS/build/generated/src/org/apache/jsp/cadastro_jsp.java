@@ -56,9 +56,18 @@ public final class cadastro_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            function encriptarSenha(form) {\r\n");
       out.write("                if (form.senha.value != '') {\r\n");
       out.write("                    form.senha.value = CryptoJS.MD5(form.senha.value).toString();\r\n");
+      out.write("                    \r\n");
       out.write("                }\r\n");
       out.write("            }\r\n");
       out.write("        </script>\r\n");
+      out.write("        \r\n");
+      out.write("        <style>\r\n");
+      out.write("            .mensagemErro{\r\n");
+      out.write("                color: red;\r\n");
+      out.write("                text-align: right;\r\n");
+      out.write("            }\r\n");
+      out.write("        </style>\r\n");
+      out.write("        \r\n");
       out.write("        <title>Cadastro</title>\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
@@ -67,31 +76,46 @@ public final class cadastro_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\r\n");
       out.write("\t<div class=\"form-container sign-in-container\">\r\n");
       out.write("            \r\n");
-      out.write("            <form class=\"form\" action=\"ServletClientes\" onsubmit=\"encriptarSenha(this)\">\r\n");
+      out.write("            <form class=\"form\" action=\"ServletCadastroCliente\" method=\"post\" onsubmit=\"encriptarSenha(this)\">\r\n");
       out.write("                <div class=\"section\">\r\n");
       out.write("                    <div class=\"control-group\">\r\n");
-      out.write("                    Usuário <input class=\"form-usuario\" type=\"text\" name=\"usuario\" autocomplete=\"off\" placeholder=\"Usuário\"><br>\r\n");
-      out.write("                    Senha <input class=\"form-senha\" type=\"password\" name=\"senha\" autocomplete=\"off\" placeholder=\"Senha\"><br>\r\n");
+      out.write("                        Usuário <input class=\"form-usuario\" type=\"text\" name=\"usuario\" autocomplete=\"off\" placeholder=\"Usuário\" required><br>\r\n");
+      out.write("                        Senha <input class=\"form-senha\" type=\"password\" name=\"senha\" autocomplete=\"off\" placeholder=\"Senha\" required><br>\r\n");
       out.write("                    </div>\r\n");
       out.write("\r\n");
       out.write("                <div class=\"control-group\">\r\n");
-      out.write("                    Nome <input class=\"form-nome\" type=\"text\" name=\"nome\" autocomplete=\"off\" placeholder=\"Nome\"><br>\r\n");
-      out.write("                    Sobrenome <input class=\"form-sobrenome\" type=\"text\" name=\"sobrenome\" autocomplete=\"off\" placeholder=\"Sobrenome\"><br>\r\n");
+      out.write("                    Nome <input class=\"form-nome\" type=\"text\" name=\"nome\" autocomplete=\"off\" placeholder=\"Nome\" required> <br>\r\n");
+      out.write("                    Sobrenome <input class=\"form-sobrenome\" type=\"text\" name=\"sobrenome\" autocomplete=\"off\" placeholder=\"Sobrenome\" required><br>\r\n");
       out.write("                    <button class=\"btnCancelar\" type=\"button\" onclick=\"location.href='login.jsp';\">Cancelar</button>\r\n");
+      out.write("                    \r\n");
+      out.write("                        <p class=\"mensagemErro\">\r\n");
+      out.write("                        \r\n");
+      out.write("                        ");
+
+                            String mensagem = (String) request.getAttribute("mensagem");
+                            
+                            if(mensagem != null){
+                                out.print(mensagem);
+                            }
+                        
+      out.write("\r\n");
+      out.write("                        \r\n");
+      out.write("                        </p>\r\n");
+      out.write("                    \r\n");
       out.write("                </div>\r\n");
       out.write("                    \r\n");
       out.write("                </div>\r\n");
       out.write("\r\n");
       out.write("                <div class=\"section\">\r\n");
       out.write("                 <div class=\"control-group\">\r\n");
-      out.write("                    CPF <input type=\"text\" id=\"cpf\" name=\"cpf\" class=\"form-cpf\" autocomplete=\"0ff\"><br>\r\n");
-      out.write("                    Rua <input class=\"form-rua\" type=\"text\" name=\"rua\" autocomplete=\"off\" placeholder=\"Rua\"><br>\r\n");
-      out.write("                    Número <input class=\"form-numero\" type=\"text\" name=\"numero\" autocomplete=\"off\" placeholder=\"Número\"><br>\r\n");
-      out.write("                    CEP <input class=\"form-cep\" type=\"text\" name=\"cep\" autocomplete=\"off\"  placeholder=\"CEP\"><br>\r\n");
+      out.write("                    CPF <input type=\"text\" id=\"cpf\" name=\"cpf\" class=\"form-cpf\" autocomplete=\"0ff\" required><br>\r\n");
+      out.write("                    Rua <input class=\"form-rua\" type=\"text\" name=\"rua\" autocomplete=\"off\" placeholder=\"Rua\" required><br>\r\n");
+      out.write("                    Número <input class=\"form-numero\" type=\"text\" name=\"numero\" autocomplete=\"off\" placeholder=\"Número\" required><br>\r\n");
+      out.write("                    CEP <input class=\"form-cep\" type=\"text\" name=\"cep\" autocomplete=\"off\"  placeholder=\"CEP\" required><br>\r\n");
       out.write("                    \r\n");
       out.write("                    \r\n");
       out.write("                   \r\n");
-      out.write("                    <button class=\"btnCad\" type=\"submit\" onclick=\"location.href='index.jsp';\">Cadastrar</button>\r\n");
+      out.write("                    <button class=\"btnCad\" type=\"submit\">Cadastrar</button>\r\n");
       out.write("\r\n");
       out.write("                </div>\r\n");
       out.write("                </div>\r\n");

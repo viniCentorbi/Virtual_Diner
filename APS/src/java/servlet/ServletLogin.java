@@ -3,7 +3,6 @@ package servlet;
 import dao.ClienteDao;
 import entidade.Cliente;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
 
 @WebServlet(name = "ServletLogin", urlPatterns = {"/ServletLogin"})
 public class ServletLogin extends HttpServlet {
@@ -47,7 +45,7 @@ public class ServletLogin extends HttpServlet {
             
            Cliente c = cd.buscarClienteId(idUsuario);
 
-            if(c.validarCliente(c, formUsuario, formSenha)){
+            if(formUsuario.equals(c.getUsuario()) && formSenha.equals(c.getSenha())){
 
                 if(c.getFgAtivo() == true){              
                     rd = request.getRequestDispatcher("/lanche.jsp");
@@ -64,17 +62,17 @@ public class ServletLogin extends HttpServlet {
                 session.setAttribute("senha", formSenha);
 
 
-            }else{            
-                rd = request.getRequestDispatcher("/cadastro.jsp");
+            }else{  
+                
+                request.setAttribute("mensagem", "Usuário e/ou senha inválido!");
+                
+                rd = request.getRequestDispatcher("/login.jsp");
                 rd.forward(request, response);
-                
-                
-                
             } 
             
         }else{
-            
-            rd = request.getRequestDispatcher("/cadastro.jsp");
+            request.setAttribute("mensagem", "Usuário não encontrado!");
+            rd = request.getRequestDispatcher("/login.jsp");
             rd.forward(request, response);
             
         }

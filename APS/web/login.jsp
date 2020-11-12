@@ -5,6 +5,8 @@
 --%>
 
 
+
+<%@page import="entidade.Cliente"%>
 <%@page import="dao.ClienteDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,8 +15,27 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="stylelogin.css">
         
+                
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
+        
+        <script>
+            function encriptarSenha(form) {
+                if (form.senha.value != '') {
+                    form.senha.value = CryptoJS.MD5(form.senha.value).toString();
+                }
+            }
+                        
+        </script>
+        
+        <style>
+            
+            .mensagemErro{
+                color: red;
+                
+            }
+            
+        </style>
         
                 
         <title>Login</title>
@@ -35,17 +56,27 @@
             
 	</div>
 	<div class="form-container sign-in-container">
-            <form action="ServletLogin" action="ServletLanche" method="post" onsubmit="encriptarSenha(this)">
+            <form class="form" action="ServletLogin" method="post" onsubmit="encriptarSenha(this);validacao(this)">
                     <h1>Entrar</h1>
                     <span>entre com sua conta.</span>
-                    <input type="text" name="usuario" placeholder="Usuário" required />
-                    <input type="password" name="senha" placeholder="Senha" required/>
-                    <a href="#">Perdeu sua senha? problema seu</a>
+                    <input type="text" name="usuario" placeholder="Usuário" required autocomplete="off" />
+                    <input type="password" name="senha" placeholder="Senha" required autocomplete="off"/>
+                    
+                    <p class="mensagemErro">
+                        
+                        <%
+                            String mensagem = (String) request.getAttribute("mensagem");
+                            
+                            if(mensagem != null){
+                                out.print(mensagem);
+                            }
+                        %>
+                        
+                    </p>
 
                     <table>
                         <td><input type="submit" name="logar" value="Logar" onclick="validaUsuario(request.getP)"></td>                            
                     </table>
-
             </form>
                        
             
