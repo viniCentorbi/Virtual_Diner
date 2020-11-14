@@ -19,13 +19,14 @@
         
         <style>
         #ingredientes {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 70%;
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 70%;
+            border: 1px solid black;
         }
 
         #exibirIngredientes{
-          border: 1px solid #dddddd;
+          border: 1px solid black;
           text-align: left;
           padding: 8px;
         }
@@ -109,17 +110,25 @@
                 <div class="content">
                     
                     <center>
-
-                        <form action="ServletIngredientes" method="get">
-                            Número: <input type="text" name="idIngrediente" autocomplete="off" required><br>
-                                Preço: <input type="text" name="preco" required><br>
-                                Estoque: <input type="number" name="estoque" autocomplete="off" required><br>
+                        
+                        <div class="formExibirIngredientes">
+                            <h3>Preencha para alterar/excluir ingredientes</h3>
+                            <form action="ServletIngredientes" method="get">
+                                Número: <input type="text" name="idIngrediente" autocomplete="off" required>
+                                <br>
+                                <br>
+                                Preço: <input type="text" name="preco" required>
+                                <br>
+                                <br>
+                                Estoque: <input type="number" name="estoque" autocomplete="off" required>
+                                <br>
+                                <br>
                                 <table>
                                     <td><button class="btnCad" type="submit" name="botao" value="alterar">Alterar</button></td>
                                     <td><button class="btnCad" type="submit" name="botao" value="excluir">Excluir</button></td>
                                 </table>           
-                        </form>
-
+                            </form>
+                        </div>
 
                         <table id = "ingredientes">
 

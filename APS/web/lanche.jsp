@@ -57,12 +57,10 @@
                 
                 
                 <div class="box">       
-                    
-                        
-                    <h1 class="titulo">Monte seu Lanche</h1>
-                        
-                   
+                   <h1 class="titulo">Monte seu Lanche</h1>
                     <form action="ServletLanche" method="get" class="formLanche">
+                        
+                        
 
                         <select name="pao" id="pao" required>
 
