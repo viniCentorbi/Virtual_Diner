@@ -55,7 +55,8 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head>\r\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"stylelogin.css\">\r\n");
-      out.write("        \r\n");
+      out.write("        <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"logo.ico\">\r\n");
+      out.write("\r\n");
       out.write("                \r\n");
       out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js\"></script>\r\n");
       out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js\"></script>\r\n");
@@ -75,6 +76,17 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                color: red;\r\n");
       out.write("                \r\n");
       out.write("            }\r\n");
+      out.write("            \r\n");
+      out.write("            input[type=submit] {\r\n");
+      out.write("                background-color: #ed7801;\r\n");
+      out.write("                border-radius: 10px;\r\n");
+      out.write("                border-style: none;\r\n");
+      out.write("                text-decoration: none;\r\n");
+      out.write("                color: white;\r\n");
+      out.write("                padding: 15px 30px;\r\n");
+      out.write("                font-weight: bold;\r\n");
+      out.write("                cursor: pointer;\r\n");
+      out.write("         \r\n");
       out.write("            \r\n");
       out.write("        </style>\r\n");
       out.write("        \r\n");

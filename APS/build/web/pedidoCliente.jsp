@@ -17,6 +17,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="menu.css">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="shortcut icon" type="image/x-icon" href="logo.ico">
         <title>Pedido Cliente</title>
         
         <style>
@@ -79,19 +80,15 @@
                 
                 BigDecimal precoPedido = precoPao.add(precoCarne);
                 
-                BigDecimal precoTotal = null;
-                
-                if(molho == null && salada == null){
-                    precoTotal = precoPedido;
-                }                
+                                
                 if(molho != null){
                     BigDecimal precoMolho = l.listarLanche().get(ultLanche).getIdMolho().getPreco();
-                    precoTotal = precoPedido.add(precoMolho);
+                    precoPedido = precoPedido.add(precoMolho);
                     molhoDesc = l.buscarLancheId(idLanche).getIdMolho().getDescricao();
                 }
                 if(salada != null){
                     BigDecimal precoSalada = l.listarLanche().get(ultLanche).getIdSalada().getPreco();
-                    precoTotal = precoPedido.add(precoSalada);
+                    precoPedido = precoPedido.add(precoSalada);
                     saladaDesc = l.buscarLancheId(idLanche).getIdSalada().getDescricao();
                 } 
                 //------------------------------------------------------------------------------------------------- 
@@ -116,7 +113,7 @@
                         <td><%=carne%></td>
                         <td><%=saladaDesc%></td>
                         <td><%=molhoDesc%></td>
-                        <td><%=precoTotal%></td>
+                        <td><%=precoPedido%></td>
                     </tr>                         
 
                 </table> 

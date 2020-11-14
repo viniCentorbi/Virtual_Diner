@@ -57,7 +57,7 @@ public final class pedidoAdm_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        table {\n");
       out.write("          font-family: arial, sans-serif;\n");
       out.write("          border-collapse: collapse;\n");
-      out.write("          width: 100%;\n");
+      out.write("          width: 70%;\n");
       out.write("        }\n");
       out.write("\n");
       out.write("        td, th {\n");
@@ -72,54 +72,90 @@ public final class pedidoAdm_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </style>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("\n");
-      out.write("    <h2>Pedidos</h2>\n");
-      out.write("    \n");
       out.write("        ");
 
             PedidoDao p = new PedidoDao();
 
             List<Pedido> getListPedido = p.listarPedidos();
-           
+
         
       out.write("\n");
+      out.write("        \n");
+      out.write("        <main>\n");
+      out.write("            <aside>\n");
+      out.write("                <ul class=\"asideList\">\n");
+      out.write("                    <li><a href=\"pedidoAdm.jsp\" class=\"asideAnchor\">Inicio</a></li>\n");
+      out.write("                    <li><a href=\"relatorio.jsp\" class=\"asideAnchor\">Relatório</a></li>                  \n");
+      out.write("                    <li class=\"asideAnchor2\">Ingredientes</li>\n");
+      out.write("                    <ul class=\"brunodatrabalho\">\n");
+      out.write("                        <li><a href=\"ingredientes.jsp\" class=\"asideAnchor\">Cadastrar</a></li>\n");
+      out.write("                        <li><a href=\"exibirIngredientes.jsp\" class=\"asideAnchor\">Exibir</a></li>\n");
+      out.write("                    </ul>\n");
+      out.write("                    <ul class=\"brunodatrabalho2\">\n");
+      out.write("                        <li><a href=\"login.jsp\" class=\"asideAnchor\">Logout</a></li>            \n");
+      out.write("                    </ul>\n");
+      out.write("                </ul>\n");
+      out.write("            </aside>\n");
+      out.write("            <section>\n");
+      out.write("                <input type=\"checkbox\" id=\"myInput\">\n");
+      out.write("                <label for=\"myInput\">\n");
+      out.write("                  <span class=\"bar top\"></span>\n");
+      out.write("                  <span class=\"bar middle\"></span>\n");
+      out.write("                  <span class=\"bar bottom\"></span>\n");
+      out.write("                </label>\n");
+      out.write("        \n");
+      out.write("                <div class=\"content\">                    \n");
+      out.write("                    \n");
+      out.write("                    <h2>Pedidos</h2>\n");
+      out.write("    \n");
+      out.write("                    \n");
       out.write("\n");
-      out.write("        <table>\n");
-      out.write("          <tr>\n");
-      out.write("            <th>ID Usuário</th>\n");
-      out.write("            <th>ID Lanche</th>\n");
-      out.write("            <th>Preço Total</th>\n");
-      out.write("            <th>Hora do Pedido</th>\n");
-      out.write("          </tr>\n");
-      out.write("          \n");
-      out.write("            ");
-
-                for(Pedido pedidos:getListPedido){ 
-
-            
+      out.write("                    <table>\n");
+      out.write("                      <tr>\n");
+      out.write("                        <th>ID Usuário</th>\n");
+      out.write("                        <th>ID Lanche</th>\n");
+      out.write("                        <th>Preço Total</th>\n");
+      out.write("                        <th>Hora do Pedido</th>\n");
+      out.write("                      </tr>\n");
       out.write("\n");
-      out.write("            <tr>\n");
-      out.write("                <td>");
+      out.write("                        ");
+
+                            for(Pedido pedidos:getListPedido){ 
+
+                        
+      out.write("\n");
+      out.write("                        <tr>\n");
+      out.write("                            <td>");
       out.print(pedidos.getPedidoPK().getIdUsuario());
       out.write("</td>\n");
-      out.write("                <td>");
+      out.write("                            <td>");
       out.print(pedidos.getPedidoPK().getIdLanche());
       out.write("</td>\n");
-      out.write("                <td>");
+      out.write("                            <td>");
       out.print(pedidos.getPrecoPedido());
       out.write("</td>\n");
-      out.write("                <td>");
+      out.write("                            <td>");
       out.print(pedidos.getDtHoraPedido());
       out.write("</td>\n");
-      out.write("            </tr>\n");
-      out.write("            ");
+      out.write("                        </tr>\n");
+      out.write("                        ");
 
-                }
-            
+                            }
+                        
       out.write("              \n");
-      out.write("          \n");
-      out.write("          \n");
-      out.write("        </table>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("                    </table>\n");
+      out.write("                            \n");
+      out.write("                </div>\n");
+      out.write("            </section>\n");
+      out.write("        </main>\n");
+      out.write("        \n");
+      out.write("        \n");
+      out.write("        \n");
+      out.write("        \n");
+      out.write("\n");
+      out.write("    \n");
       out.write("\n");
       out.write("    </body>\n");
       out.write("</html>\n");

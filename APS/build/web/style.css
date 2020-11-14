@@ -1,3 +1,83 @@
+.divRelatorio{
+    text-align: left;
+    margin-top: 5%;
+    margin-right: 0%;
+    margin-bottom: 0;
+    margin-left: 26%;
+    background-color: rgba(255,255,255, 0.5);
+    width: 40%;
+    padding: 3%;
+    padding-top: 1%;
+    border: 3px solid black;
+    font-weight: bolder;
+}
+
+/*----------------------------------------------------------------------------*/
+.cadastroIngrediente{   
+    text-align: left;
+    margin-top: 5%;
+    margin-right: 0%;
+    margin-bottom: 0;
+    margin-left: 0;
+    background-color: rgba(255,255,255, 0.5);
+    width: 23%;
+    padding: 3%;
+    padding-top: 1%;
+    border: 3px solid black;
+    font-weight: bolder;
+}
+.btnSalvarIngredientes{
+    cursor: pointer;
+    background-color: #007600;                
+    border-radius: 10px;
+    border-style: none;
+    text-decoration: none;
+    color: white;
+    padding: 10px 25px;
+    margin: 20px 20px;
+    margin-right: 45%;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    
+}
+.btnCancelarIngredientes{
+    background-color: #bd0000; 
+    border-radius: 10px;
+    border-style: none;
+    text-decoration: none;
+    color: white;
+    padding: 10px 25px;
+    margin: 20px 20px;
+    margin-right: 30%;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+/*----------------------------------------------------------------------------*/
+.pedidoAdm{
+    text-align: left;
+    margin-top: 6%;
+    margin-right: 0%;
+    margin-bottom: 0;
+    margin-left: 15%;
+}
+
+
+.formExibirIngredientes{
+    border: 3px solid black;
+    width: 35%;
+    margin-top: 2%;
+    margin-right: 0;
+    margin-bottom: 2%;
+    margin-left: 0;
+    font-weight: bolder;
+    background-color: rgba(255,255,255, 0.5);
+}
+/*----------------------------------------------------------------------------*/
 .tituloPedidoCliente{
     margin-top: 100px;
 }

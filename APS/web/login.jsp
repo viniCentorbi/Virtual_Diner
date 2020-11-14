@@ -14,7 +14,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="stylelogin.css">
-        
+        <link rel="shortcut icon" type="image/x-icon" href="logo.ico">
+
                 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
@@ -34,6 +35,17 @@
                 color: red;
                 
             }
+            
+            input[type=submit] {
+                background-color: #ed7801;
+                border-radius: 10px;
+                border-style: none;
+                text-decoration: none;
+                color: white;
+                padding: 15px 30px;
+                font-weight: bold;
+                cursor: pointer;
+         
             
         </style>
         

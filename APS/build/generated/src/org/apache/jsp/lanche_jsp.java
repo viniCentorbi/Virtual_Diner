@@ -108,12 +108,10 @@ public final class lanche_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                \r\n");
       out.write("                \r\n");
       out.write("                <div class=\"box\">       \r\n");
-      out.write("                    \r\n");
-      out.write("                        \r\n");
-      out.write("                    <h1 class=\"titulo\">Monte seu Lanche</h1>\r\n");
-      out.write("                        \r\n");
-      out.write("                   \r\n");
+      out.write("                   <h1 class=\"titulo\">Monte seu Lanche</h1>\r\n");
       out.write("                    <form action=\"ServletLanche\" method=\"get\" class=\"formLanche\">\r\n");
+      out.write("                        \r\n");
+      out.write("                        \r\n");
       out.write("\r\n");
       out.write("                        <select name=\"pao\" id=\"pao\" required>\r\n");
       out.write("\r\n");

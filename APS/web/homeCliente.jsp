@@ -12,6 +12,8 @@
             <title>Home Cliente</title>
             <link rel="stylesheet" type="text/css" href="menu.css"> 
             <link rel="stylesheet" type="text/css" href="style.css"> 
+            <link rel="shortcut icon" type="image/x-icon" href="logo.ico">
+
             <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -47,16 +49,18 @@
     
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="rucula.jpg" alt="Cuphead">
+          <a href="lanche.jsp">
+            <img src="lanche3.jpg" alt="Cuphead">
+          </a>
         <div class="carousel-caption">
-          <h3></h3>
-          <p></p>
+          <h3>Pimenta do Capeta</h3>
+          <p>Ardido igual o cu de Satanás</p>
         </div>      
       </div>
 
       <div class="item">
         <a href="lanche.jsp">
-        <img src="lanche2.jpg" alt="Don't Starve">
+        <img src="lanche5.jpg" alt="Don't Starve">
         </a>
         <div class="carousel-caption">
           <h3>Testículo de Boi</h3>
@@ -65,10 +69,12 @@
       </div>
     
       <div class="item">
-        <img src="porco.jpg" alt="Zelda">
+        <a href="lanche.jsp">
+          <img src="lanche7.png" alt="Zelda">
+        </a>
         <div class="carousel-caption">
-          <h3></h3>
-          <p></p>
+          <h3>Lanche da Morte</h3>
+          <p>Sua ultima refeição preferida</p>
         </div>      
       </div>
     </div>

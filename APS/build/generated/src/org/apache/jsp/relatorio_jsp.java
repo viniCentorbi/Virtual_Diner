@@ -54,6 +54,7 @@ public final class relatorio_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("        <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"logo.ico\">\n");
       out.write("        <title>Relatório</title>\n");
       out.write("        \n");
       out.write("        <style>\n");
@@ -83,11 +84,14 @@ public final class relatorio_jsp extends org.apache.jasper.runtime.HttpJspBase
             PedidoDao pDao = new PedidoDao();
             
             SimpleDateFormat formatador = new SimpleDateFormat("HH:mm");
+            
+            
+            
             Date data = null;
             Time time = null;
             
             Date dateTeste = formatador.parse("13:00");
-            Time timeTeste = new Time(data.getTime());
+            Time timeTeste = new Time(dateTeste.getTime());
             
             int tam = pDao.listarPedidos().size();
             int qtdPedido1 = 0;

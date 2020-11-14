@@ -15,9 +15,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="menu.css">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="shortcut icon" type="image/x-icon" href="logo.ico">
+
         <title>Exibir Ingredientes</title>
         
         <style>
+        th{
+            background-color: #ed7801;
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+            
+        }
         #ingredientes {
             font-family: arial, sans-serif;
             border-collapse: collapse;
@@ -29,10 +38,11 @@
           border: 1px solid black;
           text-align: left;
           padding: 8px;
+          background-color: rgba(255,255,255, 0.5);
         }
         
         #titulo{
-            border: 1px solid #dddddd;
+            border: 1px solid black;
             text-align: center;
             padding: 8px; 
             background-color: black;
@@ -40,7 +50,7 @@
         }
 
         tr:nth-child(even) {
-          background-color: #dddddd;
+          background-color: gray;
         }
         
         input{
@@ -50,6 +60,47 @@
             font-family: Arial;
             font-size: 14px;
         }
+        
+        .alter{
+            background-color: #007600;                
+            border-radius: 10px;
+            border-style: none;
+            text-decoration: none;
+            color: white;
+            padding: 10px 25px;
+            margin: 20px 20px;
+            margin-left: 0%;
+            cursor: pointer;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 17px;
+            font-weight: bold;
+            width: 22%;
+        }
+        .delete{
+            background-color: #bd0000;                
+            border-radius: 10px;
+            border-style: none;
+            text-decoration: none;
+            color: white;
+            padding: 10px 25px;
+            margin: 20px 20px;
+            margin-left: 0%;
+            cursor: pointer;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 17px;
+            font-weight: bold;
+            width: 22%;
+            opacity: none;
+        }
+        
+        .mensagemErro{
+            color: red;                
+        }
+        .mensagemSucesso{
+            color: #007600;                
+        }
+        
+        
         </style>
     </head>
     <body>
@@ -84,18 +135,16 @@
         <main>
             <aside>
                 <ul class="asideList">
-                  <li><a href="" class="asideAnchor">Inicio</a></li>
-                  <li><a href="homeCliente.jsp" class="asideAnchor">Relatório</a></li>
-                  <li><a href="homeCliente.jsp" class="asideAnchor">Pedidos</a></li>
-
-                      <li class="asideAnchor2">Ingredientes</li>
-                  <ul class="brunodatrabalho">
-                   <li><a href="" class="asideAnchor"> Cadastrar</a></li>
-                    <li><a href="" class="asideAnchor"> Exibir</a></li>
-                  </ul>
-                      <ul class="brunodatrabalho2">
-                  <li><a href="login.jsp" class="asideAnchor">Logout</a></li>            
-                      </ul>
+                    <li><a href="home.jsp" class="asideAnchor">Inicio</a></li>
+                    <li><a href="relatorio.jsp" class="asideAnchor">Relatório</a></li>                  
+                    <li class="asideAnchor2">Ingredientes</li>
+                    <ul class="brunodatrabalho">
+                        <li><a href="ingredientes.jsp" class="asideAnchor">Cadastrar</a></li>
+                        <li><a href="exibirIngredientes.jsp" class="asideAnchor">Exibir</a></li>
+                    </ul>
+                    <ul class="brunodatrabalho2">
+                        <li><a href="login.jsp" class="asideAnchor">Logout</a></li>            
+                    </ul>
                 </ul>
           </aside>
             
@@ -123,26 +172,31 @@
                                 Estoque: <input type="number" name="estoque" autocomplete="off" required>
                                 <br>
                                 <br>
-                                <table>
-                                    <td><button class="btnCad" type="submit" name="botao" value="alterar">Alterar</button></td>
-                                    <td><button class="btnCad" type="submit" name="botao" value="excluir">Excluir</button></td>
-                                </table>           
+                                <p class="mensagemErro"> ${mensagemErro}</p>
+                                <p class="mensagemSucesso"> ${mensagemSucesso}</p>
+                                <div class="buttonsExibirIngredientes">
+                                    
+                                    <button class="alter" type="submit" name="botao" value="alterar">Alterar</button>
+                                    <button class="delete" type="submit" name="botao" value="excluir">Excluir</button>
+                                    
+                                </div>
+                                
                             </form>
                         </div>
 
                         <table id = "ingredientes">
 
                             <tr>
-                                <th id = "titulo">Pão</th>
+                                <th id = "titulo" colspan="6">Pão</th>
                             </tr>
 
                             <tr>
-                              <th id="exibirIngredientes">Número</th>
-                              <th id="exibirIngredientes">Descrição</th>
-                              <th id="exibirIngredientes">Preço</th>
-                              <th id="exibirIngredientes">Data de fabricação</th>
-                              <th id="exibirIngredientes">Data de validade</th>
-                              <th id="exibirIngredientes">Estoque</th>
+                              <th id="">Número</th>
+                              <th id="">Descrição</th>
+                              <th id="">Preço</th>
+                              <th id="">Data de fabricação</th>
+                              <th id="">Data de validade</th>
+                              <th id="">Estoque</th>
                             </tr>
 
                             <%
@@ -168,16 +222,16 @@
                         <table id = "ingredientes">
 
                             <tr>
-                                <th id = "titulo">Carne</th>
+                                <th id = "titulo" colspan="6">Carne</th>
                             </tr>
 
                             <tr>
-                                <th id="exibirIngredientes">Número</th>
-                              <th id="exibirIngredientes">Descrição</th>
-                              <th id="exibirIngredientes">Preço</th>
-                              <th id="exibirIngredientes">Data de fabricação</th>
-                              <th id="exibirIngredientes">Data de validade</th>
-                              <th id="exibirIngredientes">Estoque</th>
+                                <th id="">Número</th>
+                              <th id="">Descrição</th>
+                              <th id="">Preço</th>
+                              <th id="">Data de fabricação</th>
+                              <th id="">Data de validade</th>
+                              <th id="">Estoque</th>
                             </tr>
 
                             <%
@@ -202,16 +256,16 @@
                         <table id = "ingredientes">
 
                             <tr>
-                                <th id = "titulo">Salada</th>
+                                <th id = "titulo" colspan="6">Salada</th>
                             </tr>
 
                             <tr>
-                                <th id="exibirIngredientes">Número</th>
-                              <th id="exibirIngredientes">Descrição</th>
-                              <th id="exibirIngredientes">Preço</th>
-                              <th id="exibirIngredientes">Data de fabricação</th>
-                              <th id="exibirIngredientes">Data de validade</th>
-                              <th id="exibirIngredientes">Estoque</th>
+                                <th id="">Número</th>
+                              <th id="">Descrição</th>
+                              <th id="">Preço</th>
+                              <th id="">Data de fabricação</th>
+                              <th id="">Data de validade</th>
+                              <th id="">Estoque</th>
                             </tr>
 
                             <%
@@ -237,16 +291,16 @@
                         <table id = "ingredientes">
 
                             <tr>
-                                <th id = "titulo">Molho</th>
+                                <th id = "titulo" colspan="6">Molho</th>
                             </tr>
 
                             <tr>
-                                <th id="exibirIngredientes">Número</th>
-                              <th id="exibirIngredientes">Descrição</th>
-                              <th id="exibirIngredientes">Preço</th>
-                              <th id="exibirIngredientes">Data de fabricação</th>
-                              <th id="exibirIngredientes">Data de validade</th>
-                              <th id="exibirIngredientes">Estoque</th>
+                                <th id="">Número</th>
+                              <th id="">Descrição</th>
+                              <th id="">Preço</th>
+                              <th id="">Data de fabricação</th>
+                              <th id="">Data de validade</th>
+                              <th id="">Estoque</th>
                             </tr>
 
                             <%

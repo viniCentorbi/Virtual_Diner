@@ -42,7 +42,7 @@ public class ServletIngredientes extends HttpServlet {
         
         
         //Pegando dados do Form
-        int idIngrediente = Integer.parseInt(request.getParameter("idIngrediente"));
+        
         String descricao = request.getParameter("descricao");
         BigDecimal preco = new BigDecimal(request.getParameter("preco"));
         String dt_fab = request.getParameter("dt_fabricacao");
@@ -50,24 +50,11 @@ public class ServletIngredientes extends HttpServlet {
         int estoque = Integer.parseInt(request.getParameter("estoque"));
         String tipo = request.getParameter("dt_validade");
         
-        boolean ingredienteExiste = true;
-        
        
-        
-        Ingredientes ingProcurado = ingredientesDao.buscarIngredienteId(idIngrediente);
-        
-            
-        if(ingProcurado != null){            
-          ingredienteExiste = true;            
-
-        }else{
-            ingredienteExiste = false;
-        }
-            
-               
+        Ingredientes ingProcurado = new Ingredientes();
         
         
-        if(valorButton.equals("salvar") && ingredienteExiste == true){
+        if(valorButton.equals("salvar")){
             
             Ingredientes ingredientesSalvar = new Ingredientes();
             //Salvando os dados no ingrediente
@@ -81,21 +68,62 @@ public class ServletIngredientes extends HttpServlet {
             //Salvando no Banco              
             ingredientesDao.salvar(ingredientesSalvar);
             
-        }else if (valorButton.equals("alterar") && ingredienteExiste == true){
+            request.setAttribute("mensagemCadastroSucesso", "Ingrediente salvo com sucesso!");
                 
-            Ingredientes ingredientesAlterar = ingProcurado;
-            //Salvando os dados no ingrediente                  
-            ingredientesAlterar.setPreco(preco);       
-            ingredientesAlterar.setEstoque(estoque);            
+            RequestDispatcher rd = null;
+            rd = request.getRequestDispatcher("/ingredientes.jsp");
+            rd.forward(request, response);
             
-            //Alterando no Banco  
-            ingredientesDao.alterar(ingredientesAlterar);
+        }else if (valorButton.equals("alterar")){
+            int idIngrediente = Integer.parseInt(request.getParameter("idIngrediente"));
+            ingProcurado = ingredientesDao.buscarIngredienteId(idIngrediente);
             
-        }else if (valorButton.equals("excluir") && ingredienteExiste == true){
-            Ingredientes ingredientesExcluir = ingProcurado;             
+            if(ingProcurado != null){            
+                
+                Ingredientes ingredientesAlterar = ingProcurado;
+                //Salvando os dados no ingrediente                  
+                ingredientesAlterar.setPreco(preco);       
+                ingredientesAlterar.setEstoque(estoque);            
+
+                //Alterando no Banco  
+                ingredientesDao.alterar(ingredientesAlterar);
+                
+                request.setAttribute("mensagemSucesso", "Ingrediente alterado com sucesso!");
+                
+                RequestDispatcher rd = null;
+                rd = request.getRequestDispatcher("/exibirIngredientes.jsp");
+                rd.forward(request, response);
+
+            }else{
+                request.setAttribute("mensagemErro", "Ingrediente não encontrado!");
+                RequestDispatcher rd = null;
+                rd = request.getRequestDispatcher("/exibirIngredientes.jsp");
+                rd.forward(request, response);
+            }
             
-            //Excluindo no Banco  
-            ingredientesDao.excluir(ingredientesExcluir);
+        }else if (valorButton.equals("excluir")){
+            int idIngrediente = Integer.parseInt(request.getParameter("idIngrediente"));
+            ingProcurado = ingredientesDao.buscarIngredienteId(idIngrediente);
+            
+            if(ingProcurado != null){             
+                Ingredientes ingredientesInativo = ingProcurado;
+                //Salvando os dados no ingrediente                  
+                ingredientesInativo.setEstoque(0);
+                //Alterando no Banco  
+                ingredientesDao.alterar(ingredientesInativo);
+
+                request.setAttribute("mensagemSucesso", "Ingrediente excluido com sucesso!");
+                
+                RequestDispatcher rd = null;
+                rd = request.getRequestDispatcher("/exibirIngredientes.jsp");
+                rd.forward(request, response);
+            }else{
+                request.setAttribute("mensagemErro", "Ingrediente não encontrado!");
+                
+                RequestDispatcher rd = null;
+                rd = request.getRequestDispatcher("/exibirIngredientes.jsp");
+                rd.forward(request, response);
+            }
             
         }else{
             
