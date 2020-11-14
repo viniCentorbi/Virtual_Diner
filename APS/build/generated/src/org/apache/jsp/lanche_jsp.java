@@ -55,19 +55,21 @@ public final class lanche_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
+      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"menu.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\r\n");
+      out.write("        \r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css\">\r\n");
+      out.write("            \r\n");
       out.write("        <title>Lanche</title>\r\n");
+      out.write("               \r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
-      out.write("        <center>\r\n");
-      out.write("        <div>\r\n");
-      out.write("            \r\n");
-      out.write("            ");
+      out.write("        \r\n");
+      out.write("        ");
 
                 IngredientesDao i = new IngredientesDao();
                 
@@ -75,113 +77,159 @@ public final class lanche_jsp extends org.apache.jasper.runtime.HttpJspBase
                 List<Ingredientes> getListCarne = i.listarCarnes();
                 List<Ingredientes> getListSalada = i.listarSaladas();
                 List<Ingredientes> getListMolho = i.listarMolhos();
-            
-      out.write("\r\n");
+        
+      out.write("        \r\n");
+      out.write("        \r\n");
+      out.write("        \r\n");
+      out.write("        \r\n");
+      out.write("        <main>\r\n");
+      out.write("            <aside>\r\n");
+      out.write("                <ul class=\"asideList\">\r\n");
+      out.write("                  <li><a href=\"homeCliente.jsp\" class=\"asideAnchor\">Inicio</a></li>\r\n");
+      out.write("                  <li><a href=\"lanche.jsp\" class=\"asideAnchor\">Montar Lanche</a></li>\r\n");
+      out.write("                            <ul style=\"margin-top: 110%;\" class=\"brunodatrabalho2\">\r\n");
+      out.write("                  <li><a  href=\"login.jsp\" class=\"asideAnchor\">Logout</a></li>            \r\n");
+      out.write("                      </ul>\r\n");
+      out.write("                </ul>\r\n");
+      out.write("            </aside>\r\n");
+      out.write("                 \r\n");
+      out.write("        <section>\r\n");
+      out.write("            <input type=\"checkbox\" id=\"myInput\">\r\n");
+      out.write("            \r\n");
+      out.write("            <label for=\"myInput\">\r\n");
+      out.write("              <span class=\"bar top\"></span>\r\n");
+      out.write("              <span class=\"bar middle\"></span>\r\n");
+      out.write("              <span class=\"bar bottom\"></span>\r\n");
+      out.write("            </label>\r\n");
+      out.write("            \r\n");
+      out.write("            \r\n");
+      out.write("            <div class=\"content\">                \r\n");
       out.write("                \r\n");
-      out.write("            <form action=\"ServletLanche\" method=\"get\">\r\n");
-      out.write("                                \r\n");
-      out.write("                Pão:\r\n");
-      out.write("                <select name=\"pao\" id=\"pao\" required>\r\n");
-      out.write("                    <option value=\"\">Selecione</option>\r\n");
-      out.write("                    ");
-
-                        for(Ingredientes ingredientes:getListPao){ 
-                            
-                    
-      out.write("\r\n");
-      out.write("                        <option value=\"");
-      out.print(ingredientes.getDescricao());
-      out.write('"');
-      out.write('>');
-      out.print(ingredientes.getDescricao());
-      out.write("</option>\r\n");
+      out.write("                \r\n");
+      out.write("                \r\n");
+      out.write("                <div class=\"box\">       \r\n");
+      out.write("                    \r\n");
       out.write("                        \r\n");
-      out.write("                    ");
-
-                        }
-                    
-      out.write("\r\n");
-      out.write("                                    \r\n");
-      out.write("                </select>\r\n");
+      out.write("                    <h1 class=\"titulo\">Monte seu Lanche</h1>\r\n");
+      out.write("                        \r\n");
       out.write("                   \r\n");
-      out.write("                Carne:\r\n");
-      out.write("                <select name=\"carne\" id=\"carne\" required>\r\n");
-      out.write("                    <option value=\"\">Selecione</option>\r\n");
-      out.write("                    ");
-
-                        for(Ingredientes ingredientes:getListCarne){ 
-                            
-                    
+      out.write("                    <form action=\"ServletLanche\" method=\"get\" class=\"formLanche\">\r\n");
       out.write("\r\n");
-      out.write("                        <option value=\"");
+      out.write("                        <select name=\"pao\" id=\"pao\" required>\r\n");
+      out.write("\r\n");
+      out.write("                            <option value=\"\">Pão</option>\r\n");
+      out.write("                            ");
+
+                                for(Ingredientes ingredientes:getListPao){ 
+
+                            
+      out.write("\r\n");
+      out.write("                                <option value=\"");
       out.print(ingredientes.getDescricao());
       out.write('"');
       out.write('>');
       out.print(ingredientes.getDescricao());
       out.write("</option>\r\n");
-      out.write("                        \r\n");
-      out.write("                    ");
+      out.write("\r\n");
+      out.write("                            ");
 
-                        }
-                    
+                                }
+                            
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                        </select>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                        <select name=\"carne\" id=\"carne\" required>\r\n");
+      out.write("                            <option value=\"\">Carne</option>\r\n");
+      out.write("                            ");
+
+                                for(Ingredientes ingredientes:getListCarne){ 
+
+                            
+      out.write("\r\n");
+      out.write("                                <option value=\"");
+      out.print(ingredientes.getDescricao());
+      out.write('"');
+      out.write('>');
+      out.print(ingredientes.getDescricao());
+      out.write("</option>\r\n");
+      out.write("\r\n");
+      out.write("                            ");
+
+                                }
+                            
       out.write("                  \r\n");
-      out.write("                </select>\r\n");
-      out.write("                \r\n");
-      out.write("                Salada:\r\n");
-      out.write("                <select name=\"salada\" id=\"salada\">\r\n");
-      out.write("                    <option value=\"\">Selecione</option>\r\n");
-      out.write("                    ");
-
-                        for(Ingredientes ingredientes:getListSalada){ 
-                            
-                    
+      out.write("                        </select>\r\n");
       out.write("\r\n");
-      out.write("                        <option value=\"");
+      out.write("\r\n");
+      out.write("                        <select name=\"salada\" id=\"salada\">\r\n");
+      out.write("                            <option value=\"\">Salada (opcional)</option>\r\n");
+      out.write("                            ");
+
+                                for(Ingredientes ingredientes:getListSalada){ 
+
+                            
+      out.write("\r\n");
+      out.write("                                <option value=\"");
       out.print(ingredientes.getDescricao());
       out.write('"');
       out.write('>');
       out.print(ingredientes.getDescricao());
       out.write("</option>\r\n");
-      out.write("                        \r\n");
-      out.write("                    ");
-
-                        }
-                    
-      out.write("                   \r\n");
-      out.write("                </select>\r\n");
-      out.write("                \r\n");
-      out.write("                Molho:\r\n");
-      out.write("                <select name=\"molho\" id=\"molho\">\r\n");
-      out.write("                    <option value=\"\">Selecione</option>\r\n");
-      out.write("                    ");
-
-                        for(Ingredientes ingredientes:getListMolho){ 
-                            
-                    
       out.write("\r\n");
-      out.write("                        <option value=\"");
+      out.write("                            ");
+
+                                }
+                            
+      out.write("                   \r\n");
+      out.write("                        </select>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                        <select name=\"molho\" id=\"molho\">\r\n");
+      out.write("                            <option value=\"\">Molho (opcional)</option>\r\n");
+      out.write("                            ");
+
+                                for(Ingredientes ingredientes:getListMolho){ 
+
+                            
+      out.write("\r\n");
+      out.write("                                <option value=\"");
       out.print(ingredientes.getDescricao());
       out.write('"');
       out.write('>');
       out.print(ingredientes.getDescricao());
       out.write("</option>\r\n");
-      out.write("                        \r\n");
-      out.write("                    ");
+      out.write("\r\n");
+      out.write("                            ");
 
-                        }
-                    
+                                }
+                            
       out.write("                   \r\n");
-      out.write("                </select><br><br>\r\n");
+      out.write("                        </select><br><br>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                        <center>\r\n");
+      out.write("                            <table> \r\n");
+      out.write("                            \r\n");
+      out.write("                                <td><button class=\"cancel\" type=\"submit\" name=\"botao\" value=\"cancelar\">Cancelar pedido</button></td>\r\n");
+      out.write("                                <td><button class=\"confirm\" type=\"submit\" name=\"botao\" value=\"confirmar\">Adicionar pedido</button></td>\r\n");
+      out.write("                                                        \r\n");
+      out.write("                            </table> \r\n");
+      out.write("                        </center>\r\n");
+      out.write("                    </form>\r\n");
+      out.write("                </div>\r\n");
       out.write("                \r\n");
       out.write("                \r\n");
       out.write("                \r\n");
-      out.write("                <table>\r\n");
-      out.write("                    <td><input type=\"submit\" name=\"salvar\" value=\"Adicionar ao pedido\"></td>\r\n");
-      out.write("                    <td><input type=\"submit\" name=\"cancelar\" value=\"Cancelar\"></td>\r\n");
-      out.write("                </table>           \r\n");
-      out.write("            </form> \r\n");
-      out.write("        </div>\r\n");
-      out.write("        </center>\r\n");
+      out.write("            </div>\r\n");
+      out.write("\r\n");
+      out.write("          </section>\r\n");
+      out.write("        </main>\r\n");
+      out.write("            \r\n");
+      out.write("            \r\n");
+      out.write("    \r\n");
+      out.write("                \r\n");
       out.write("    </body>\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {

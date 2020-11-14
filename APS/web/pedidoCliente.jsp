@@ -1,9 +1,3 @@
-<%-- 
-    Document   : pedido
-    Created on : 29/10/2020, 09:55:57
-    Author     : USER
---%>
-
 <%@page import="entidade.Ingredientes"%>
 <%@page import="javax.swing.JOptionPane"%>
 <%@page import="dao.IngredientesDao"%>
@@ -21,29 +15,46 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Pedido</title>
+        <link rel="stylesheet" type="text/css" href="menu.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Pedido Cliente</title>
         
         <style>
         table {
           font-family: arial, sans-serif;
           border-collapse: collapse;
-          width: 100%;
+          width: 70%;
         }
 
         td, th {
           border: 1px solid #dddddd;
           text-align: left;
           padding: 8px;
+         
+        }
+        th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+          background-color: #ed7801;
+         
         }
 
         tr:nth-child(even) {
           background-color: #dddddd;
         }
         </style>
+        
+        <script>
+            function pedidoSalvo() {
+              alert("Pedido realizado com sucesso!");
+            }
+        </script>
+        
     </head>
     <body>
         <center>
-        <div>
+        <div class="box">
             
             <%
                 
@@ -70,6 +81,9 @@
                 
                 BigDecimal precoTotal = null;
                 
+                if(molho == null && salada == null){
+                    precoTotal = precoPedido;
+                }                
                 if(molho != null){
                     BigDecimal precoMolho = l.listarLanche().get(ultLanche).getIdMolho().getPreco();
                     precoTotal = precoPedido.add(precoMolho);
@@ -84,37 +98,39 @@
 
             %>
                 
-            <h1>Seu Pedido</h1>
+            <h1 class="titulo">Seu Pedido</h1>
             
-                            
-            <table>
-                <tr>
-                  <th>Pão</th>
-                  <th>Carne</th>
-                  <th>Salada</th>
-                  <th>Molho</th>
-                  <th>Preço Total</th>
-                </tr>
-          
-          
-                <tr>
-                    <td><%=pao%></td>
-                    <td><%=carne%></td>
-                    <td><%=saladaDesc%></td>
-                    <td><%=molhoDesc%></td>
-                    <td><%=precoTotal%></td>
-                </tr>                         
-          
-            </table> 
+            <center>              
+                <table>
+                    <tr>
+                      <th>Pão</th>
+                      <th>Carne</th>
+                      <th>Salada</th>
+                      <th>Molho</th>
+                      <th>Preço Total</th>
+                    </tr>
+
+
+                    <tr>
+                        <td><%=pao%></td>
+                        <td><%=carne%></td>
+                        <td><%=saladaDesc%></td>
+                        <td><%=molhoDesc%></td>
+                        <td><%=precoTotal%></td>
+                    </tr>                         
+
+                </table> 
+            </center>
             
                 <br>
-                
-                <form action="ServletPedido" method="get">
-                    <button class="btnCad" type="submit" name="botao" value="salvar">Finalizar Pedido</button>
-                    <button class="btnCad" type="submit" name="botao" value="excluir">Cancelar Pedido</button>
-                    
-                </form>
-                
+                <center>
+                    <form action="ServletPedido" method="get">
+                        <table>
+                            <td><button class="btnCancelar" type="submit" name="botao" value="excluir">Cancelar Pedido</button></td>
+                            <td><button onclick="pedidoSalvo()"class="btnSalvar" type="submit" name="botao" value="salvar">Finalizar Pedido</button></td>
+                        </table>
+                    </form>
+                </center>
                 
             
             

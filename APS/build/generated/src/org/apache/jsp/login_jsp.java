@@ -69,6 +69,15 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        \r\n");
       out.write("        </script>\r\n");
       out.write("        \r\n");
+      out.write("        <style>\r\n");
+      out.write("            \r\n");
+      out.write("            .mensagemErro{\r\n");
+      out.write("                color: red;\r\n");
+      out.write("                \r\n");
+      out.write("            }\r\n");
+      out.write("            \r\n");
+      out.write("        </style>\r\n");
+      out.write("        \r\n");
       out.write("                \r\n");
       out.write("        <title>Login</title>\r\n");
       out.write("    </head>\r\n");
@@ -93,14 +102,24 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <span>entre com sua conta.</span>\r\n");
       out.write("                    <input type=\"text\" name=\"usuario\" placeholder=\"Usuário\" required autocomplete=\"off\" />\r\n");
       out.write("                    <input type=\"password\" name=\"senha\" placeholder=\"Senha\" required autocomplete=\"off\"/>\r\n");
-      out.write("                    <a href=\"#\">Perdeu sua senha? problema seu</a>\r\n");
+      out.write("                    \r\n");
+      out.write("                    <p class=\"mensagemErro\">\r\n");
+      out.write("                        \r\n");
+      out.write("                        ");
+
+                            String mensagem = (String) request.getAttribute("mensagem");
+                            
+                            if(mensagem != null){
+                                out.print(mensagem);
+                            }
+                        
+      out.write("\r\n");
+      out.write("                        \r\n");
+      out.write("                    </p>\r\n");
       out.write("\r\n");
       out.write("                    <table>\r\n");
       out.write("                        <td><input type=\"submit\" name=\"logar\" value=\"Logar\" onclick=\"validaUsuario(request.getP)\"></td>                            \r\n");
       out.write("                    </table>\r\n");
-      out.write("                    <br>\r\n");
-      out.write("                    <h2>Teste</h2>\r\n");
-      out.write("\r\n");
       out.write("            </form>\r\n");
       out.write("                       \r\n");
       out.write("            \r\n");

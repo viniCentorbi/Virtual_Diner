@@ -27,6 +27,12 @@ body {
 	margin: -20px 0 50px;
 }
 
+.mensagemErro {
+    color: red;
+    text-align: right;
+    margin: -30px -100px 30px;
+}
+
 h1 {
 	font-weight: bold;
 	margin: 0;

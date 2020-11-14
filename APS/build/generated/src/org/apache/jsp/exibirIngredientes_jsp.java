@@ -56,6 +56,8 @@ public final class exibirIngredientes_jsp extends org.apache.jasper.runtime.Http
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"menu.css\">\n");
+      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n");
       out.write("        <title>Exibir Ingredientes</title>\n");
       out.write("        \n");
       out.write("        <style>\n");
@@ -119,233 +121,259 @@ public final class exibirIngredientes_jsp extends org.apache.jasper.runtime.Http
                 }
                 
             }
-            
-           
         
       out.write("\n");
-      out.write("    <center>\n");
-      out.write("        \n");
-      out.write("        <form action=\"ServletIngredientes\" method=\"get\">\n");
-      out.write("                Número: <input type=\"text\" name=\"idIngrediente\" autocomplete=\"off\"><br>\n");
-      out.write("                Descrição: <input type=\"text\" name=\"descricao\" autocomplete=\"off\"><br>\n");
-      out.write("                Preço: <input type=\"text\" name=\"preco\"><br>\n");
-      out.write("                Data de Fabricação: <input type=\"date\" name=\"dt_fabricacao\" autocomplete=\"off\"><br>\n");
-      out.write("                Data de Validade: <input type=\"date\" name=\"dt_validade\" autocomplete=\"off\"><br>\n");
-      out.write("                Estoque: <input type=\"number\" name=\"estoque\" autocomplete=\"off\"><br>\n");
-      out.write("                <table>\n");
-      out.write("                    <td><button class=\"btnCad\" type=\"submit\" name=\"botao\" value=\"alterar\">Alterar</button></td>\n");
-      out.write("                    <td><button class=\"btnCad\" type=\"submit\" name=\"botao\" value=\"excluir\">Excluir</button></td>\n");
-      out.write("                </table>           \n");
-      out.write("            </form>\n");
       out.write("        \n");
       out.write("        \n");
-      out.write("        <table id = \"ingredientes\">\n");
-      out.write("            \n");
-      out.write("            <tr>\n");
-      out.write("                <th id = \"titulo\">Pão</th>\n");
-      out.write("            </tr>\n");
-      out.write("            \n");
-      out.write("            <tr>\n");
-      out.write("              <th id=\"exibirIngredientes\">Número</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Descrição</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Preço</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Data de fabricação</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Data de validade</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Estoque</th>\n");
-      out.write("            </tr>\n");
-      out.write("            \n");
-      out.write("            ");
-
-                for(Ingredientes pao:getListPao){
-            
+      out.write("        <main>\n");
+      out.write("            <aside>\n");
+      out.write("                <ul class=\"asideList\">\n");
+      out.write("                  <li><a href=\"\" class=\"asideAnchor\">Inicio</a></li>\n");
+      out.write("                  <li><a href=\"homeCliente.jsp\" class=\"asideAnchor\">Relatório</a></li>\n");
+      out.write("                  <li><a href=\"homeCliente.jsp\" class=\"asideAnchor\">Pedidos</a></li>\n");
       out.write("\n");
+      out.write("                      <li class=\"asideAnchor2\">Ingredientes</li>\n");
+      out.write("                  <ul class=\"brunodatrabalho\">\n");
+      out.write("                   <li><a href=\"\" class=\"asideAnchor\"> Cadastrar</a></li>\n");
+      out.write("                    <li><a href=\"\" class=\"asideAnchor\"> Exibir</a></li>\n");
+      out.write("                  </ul>\n");
+      out.write("                      <ul class=\"brunodatrabalho2\">\n");
+      out.write("                  <li><a href=\"login.jsp\" class=\"asideAnchor\">Logout</a></li>            \n");
+      out.write("                      </ul>\n");
+      out.write("                </ul>\n");
+      out.write("          </aside>\n");
       out.write("            \n");
-      out.write("            <tr>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("            <section>\n");
+      out.write("                <input type=\"checkbox\" id=\"myInput\">\n");
+      out.write("                <label for=\"myInput\">\n");
+      out.write("                  <span class=\"bar top\"></span>\n");
+      out.write("                  <span class=\"bar middle\"></span>\n");
+      out.write("                  <span class=\"bar bottom\"></span>\n");
+      out.write("                </label>\n");
+      out.write("\n");
+      out.write("                <div class=\"content\">\n");
+      out.write("                    \n");
+      out.write("                    <center>\n");
+      out.write("\n");
+      out.write("                        <form action=\"ServletIngredientes\" method=\"get\">\n");
+      out.write("                            Número: <input type=\"text\" name=\"idIngrediente\" autocomplete=\"off\" required><br>\n");
+      out.write("                                Preço: <input type=\"text\" name=\"preco\" required><br>\n");
+      out.write("                                Estoque: <input type=\"number\" name=\"estoque\" autocomplete=\"off\" required><br>\n");
+      out.write("                                <table>\n");
+      out.write("                                    <td><button class=\"btnCad\" type=\"submit\" name=\"botao\" value=\"alterar\">Alterar</button></td>\n");
+      out.write("                                    <td><button class=\"btnCad\" type=\"submit\" name=\"botao\" value=\"excluir\">Excluir</button></td>\n");
+      out.write("                                </table>           \n");
+      out.write("                        </form>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("                        <table id = \"ingredientes\">\n");
+      out.write("\n");
+      out.write("                            <tr>\n");
+      out.write("                                <th id = \"titulo\">Pão</th>\n");
+      out.write("                            </tr>\n");
+      out.write("\n");
+      out.write("                            <tr>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Número</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Descrição</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Preço</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Data de fabricação</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Data de validade</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Estoque</th>\n");
+      out.write("                            </tr>\n");
+      out.write("\n");
+      out.write("                            ");
+
+                                for(Ingredientes pao:getListPao){
+                            
+      out.write("\n");
+      out.write("\n");
+      out.write("                            <tr>\n");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(pao.getIdIngredientes() );
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(pao.getDescricao());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(pao.getPreco());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(pao.getDtFabricacao());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(pao.getDtValidade());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(pao.getEstoque());
       out.write("</td>\n");
-      out.write("            </tr>\n");
-      out.write("            \n");
-      out.write("            ");
-
-                }
-            
-      out.write("            \n");
-      out.write("        </table>\n");
-      out.write("        <br>\n");
-      out.write("              \n");
-      out.write("        <br>\n");
-      out.write("        <table id = \"ingredientes\">\n");
-      out.write("            \n");
-      out.write("            <tr>\n");
-      out.write("                <th id = \"titulo\">Carne</th>\n");
-      out.write("            </tr>\n");
-      out.write("            \n");
-      out.write("            <tr>\n");
-      out.write("                <th id=\"exibirIngredientes\">Número</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Descrição</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Preço</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Data de fabricação</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Data de validade</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Estoque</th>\n");
-      out.write("            </tr>\n");
-      out.write("            \n");
-      out.write("            ");
-
-                for(Ingredientes carne:getListCarne){
-            
+      out.write("                            </tr>\n");
       out.write("\n");
+      out.write("                            ");
+
+                                }
+                            
       out.write("            \n");
-      out.write("            <tr>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                        </table>\n");
+      out.write("                        <br>\n");
+      out.write("\n");
+      out.write("                        <br>\n");
+      out.write("                        <table id = \"ingredientes\">\n");
+      out.write("\n");
+      out.write("                            <tr>\n");
+      out.write("                                <th id = \"titulo\">Carne</th>\n");
+      out.write("                            </tr>\n");
+      out.write("\n");
+      out.write("                            <tr>\n");
+      out.write("                                <th id=\"exibirIngredientes\">Número</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Descrição</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Preço</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Data de fabricação</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Data de validade</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Estoque</th>\n");
+      out.write("                            </tr>\n");
+      out.write("\n");
+      out.write("                            ");
+
+                                for(Ingredientes carne:getListCarne){
+                            
+      out.write("\n");
+      out.write("\n");
+      out.write("                            <tr>\n");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(carne.getIdIngredientes());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(carne.getDescricao());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(carne.getPreco());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(carne.getDtFabricacao());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(carne.getDtValidade());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(carne.getEstoque());
       out.write("</td>\n");
-      out.write("            </tr>\n");
-      out.write("            \n");
-      out.write("            ");
-
-                }
-            
-      out.write("            \n");
-      out.write("        </table>\n");
-      out.write("               \n");
-      out.write("        <br>\n");
-      out.write("        <table id = \"ingredientes\">\n");
-      out.write("            \n");
-      out.write("            <tr>\n");
-      out.write("                <th id = \"titulo\">Salada</th>\n");
-      out.write("            </tr>\n");
-      out.write("            \n");
-      out.write("            <tr>\n");
-      out.write("                <th id=\"exibirIngredientes\">Número</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Descrição</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Preço</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Data de fabricação</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Data de validade</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Estoque</th>\n");
-      out.write("            </tr>\n");
-      out.write("            \n");
-      out.write("            ");
-
-                for(Ingredientes salada:getListSalada){
-            
+      out.write("                            </tr>\n");
       out.write("\n");
+      out.write("                            ");
+
+                                }
+                            
       out.write("            \n");
-      out.write("            <tr>\n");
-      out.write("                 <td id=\"exibirIngredientes\">");
+      out.write("                        </table>\n");
+      out.write("\n");
+      out.write("                        <br>\n");
+      out.write("                        <table id = \"ingredientes\">\n");
+      out.write("\n");
+      out.write("                            <tr>\n");
+      out.write("                                <th id = \"titulo\">Salada</th>\n");
+      out.write("                            </tr>\n");
+      out.write("\n");
+      out.write("                            <tr>\n");
+      out.write("                                <th id=\"exibirIngredientes\">Número</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Descrição</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Preço</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Data de fabricação</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Data de validade</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Estoque</th>\n");
+      out.write("                            </tr>\n");
+      out.write("\n");
+      out.write("                            ");
+
+                                for(Ingredientes salada:getListSalada){
+                            
+      out.write("\n");
+      out.write("\n");
+      out.write("                            <tr>\n");
+      out.write("                                 <td id=\"exibirIngredientes\">");
       out.print(salada.getIdIngredientes());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(salada.getDescricao());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(salada.getPreco());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(salada.getDtFabricacao());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(salada.getDtValidade());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(salada.getEstoque());
       out.write("</td>\n");
-      out.write("            </tr>\n");
-      out.write("            \n");
-      out.write("            ");
-
-                }
-            
-      out.write("            \n");
-      out.write("        </table>\n");
-      out.write("        <br>\n");
-      out.write("             \n");
-      out.write("        <br>\n");
-      out.write("        <table id = \"ingredientes\">\n");
-      out.write("            \n");
-      out.write("            <tr>\n");
-      out.write("                <th id = \"titulo\">Molho</th>\n");
-      out.write("            </tr>\n");
-      out.write("            \n");
-      out.write("            <tr>\n");
-      out.write("                <th id=\"exibirIngredientes\">Número</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Descrição</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Preço</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Data de fabricação</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Data de validade</th>\n");
-      out.write("              <th id=\"exibirIngredientes\">Estoque</th>\n");
-      out.write("            </tr>\n");
-      out.write("            \n");
-      out.write("            ");
-
-                for(Ingredientes molho:getListMolho){
-            
+      out.write("                            </tr>\n");
       out.write("\n");
+      out.write("                            ");
+
+                                }
+                            
       out.write("            \n");
-      out.write("            <tr>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                        </table>\n");
+      out.write("                        <br>\n");
+      out.write("\n");
+      out.write("                        <br>\n");
+      out.write("                        <table id = \"ingredientes\">\n");
+      out.write("\n");
+      out.write("                            <tr>\n");
+      out.write("                                <th id = \"titulo\">Molho</th>\n");
+      out.write("                            </tr>\n");
+      out.write("\n");
+      out.write("                            <tr>\n");
+      out.write("                                <th id=\"exibirIngredientes\">Número</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Descrição</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Preço</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Data de fabricação</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Data de validade</th>\n");
+      out.write("                              <th id=\"exibirIngredientes\">Estoque</th>\n");
+      out.write("                            </tr>\n");
+      out.write("\n");
+      out.write("                            ");
+
+                                for(Ingredientes molho:getListMolho){
+                            
+      out.write("\n");
+      out.write("\n");
+      out.write("                            <tr>\n");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(molho.getIdIngredientes());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(molho.getDescricao());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(molho.getPreco());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(molho.getDtFabricacao());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(molho.getDtValidade());
       out.write("</td>\n");
-      out.write("                <td id=\"exibirIngredientes\">");
+      out.write("                                <td id=\"exibirIngredientes\">");
       out.print(molho.getEstoque());
       out.write("</td>\n");
-      out.write("            </tr>\n");
-      out.write("            \n");
-      out.write("            ");
+      out.write("                            </tr>\n");
+      out.write("\n");
+      out.write("                            ");
 
-                }
-            
+                                }
+                            
       out.write("            \n");
-      out.write("        </table>\n");
-      out.write("        <br>\n");
-      out.write("              \n");
-      out.write("       \n");
-      out.write("            \n");
-      out.write("       \n");
-      out.write("        \n");
-      out.write("    </center>\n");
+      out.write("                        </table>\n");
+      out.write("                        <br>\n");
+      out.write("\n");
+      out.write("                    </center>\n");
+      out.write("                    \n");
+      out.write("                </div>\n");
+      out.write("\n");
+      out.write("            </section>\n");
+      out.write("        </main>\n");
       out.write("        \n");
       out.write("    </body>\n");
       out.write("</html>\n");

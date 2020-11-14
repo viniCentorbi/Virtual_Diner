@@ -48,7 +48,7 @@ public class ServletLogin extends HttpServlet {
             if(formUsuario.equals(c.getUsuario()) && formSenha.equals(c.getSenha())){
 
                 if(c.getFgAtivo() == true){              
-                    rd = request.getRequestDispatcher("/lanche.jsp");
+                    rd = request.getRequestDispatcher("/homeCliente.jsp");
                     rd.forward(request, response);
                 }else{
                     rd = request.getRequestDispatcher("/homeAdm.jsp");

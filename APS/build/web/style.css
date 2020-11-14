@@ -1,7 +1,156 @@
+.tituloPedidoCliente{
+    margin-top: 100px;
+}
+/*----------------------------------------------------------------------------*/
 a.a-carousel,img {
     border: none;
     width: 90vw;
+    height: 50px;
 }
+/*----------------------------------------------------------------------------*/
+.titulo{
+    padding: 18px;
+    font-weight: bolder;
+    text-shadow: 2px 2px gray;
+    color: black;
+    
+}
+/*----------------------------------------------------------------------------*/
+
+.confirm {
+    background-color: #007600;                
+    border-radius: 10px;
+    border-style: none;
+    text-decoration: none;
+    color: white;
+    padding: 10px 25px;
+    margin: 20px 20px;
+    margin-left: 80%;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    font-weight: bolder;
+    width: 100%;
+}
+.cancel{
+   background-color: #bd0000; 
+
+    border-radius: 10px;
+    border-style: none;
+    text-decoration: none;
+    color: white;
+    padding: 10px 25px;
+    margin: 20px 20px;
+    margin-left: -90%;
+    margin-right: 100%;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    font-weight: bolder;
+    width: 100%;
+}
+/*----------------------------------------------------------------------------*/
+.btnSalvar{
+    cursor: pointer;
+    background-color: #007600;                
+    border-radius: 10px;
+    border-style: none;
+    text-decoration: none;
+    color: white;
+    padding: 10px 25px;
+    margin: 20px 20px;
+    margin-left: 45%;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    font-weight: bolder;
+    width: 50%;
+}
+.btnCancelar{
+    background-color: #bd0000; 
+    border-radius: 10px;
+    border-style: none;
+    text-decoration: none;
+    color: white;
+    padding: 10px 25px;
+    margin: 20px 20px;
+    margin-right: 030%;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    font-weight: bolder;
+}
+/*----------------------------------------------------------------------------*/
+
+.box {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+
+.box select {
+    cursor: pointer;
+    background-color: #ed7801;
+    color: white;
+    padding: 12px;
+    width: 200px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+}
+
+.box::before {
+  content: "\f13a";
+  font-family: FontAwesome;
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.box:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.box select option {
+  padding: 30px;
+  
+}
+/*----------------------------------------------------------------------------*/
+.formLanche{
+    width: 100%;
+}
+
+.montaLanche{
+    margin-top: 200px;
+    margin-bottom: 0px;
+    margin-left: 0%;
+    margin-right: 0%;
+    
+    padding-bottom: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    
+    height: 100%;
+}
+
+img{
+    max-height: 47vw;
+}
+
 .trs {
     -webkit-transition:all ease-out 0.5s;
     -moz-transition:all ease-out 0.5s;

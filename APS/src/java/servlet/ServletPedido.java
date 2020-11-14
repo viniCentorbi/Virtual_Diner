@@ -96,12 +96,12 @@ public class ServletPedido extends HttpServlet {
 
             pDao.salvar(p);
             
-            rd = request.getRequestDispatcher("/index.jsp");
+            rd = request.getRequestDispatcher("/homeCliente.jsp");
             rd.forward(request, response);
         
         }else{
             
-            rd = request.getRequestDispatcher("/lanche.jsp");
+            rd = request.getRequestDispatcher("/homeCliente.jsp");
             rd.forward(request, response);
         }
     }

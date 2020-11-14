@@ -21,9 +21,8 @@
   <aside>
     <ul class="asideList">
       <li><a href="" class="asideAnchor">Inicio</a></li>
-      <li><a href="homeCliente.jsp" class="asideAnchor">Montar Lanche</a></li>
-      <li><a href="homeCliente.jsp" class="asideAnchor">Ajuda</a></li>
-          <ul style="margin-top: 110%;" class="brunodatrabalho2">
+      <li><a href="lanche.jsp" class="asideAnchor">Montar Lanche</a></li>
+                <ul style="margin-top: 110%;" class="brunodatrabalho2">
       <li><a  href="login.jsp" class="asideAnchor">Logout</a></li>            
           </ul>
     </ul>
@@ -56,10 +55,12 @@
       </div>
 
       <div class="item">
-        <img src="monstro.jpg" alt="Don't Starve">
+        <a href="lanche.jsp">
+        <img src="lanche2.jpg" alt="Don't Starve">
+        </a>
         <div class="carousel-caption">
-          <h3></h3>
-          <p></p>
+          <h3>Testículo de Boi</h3>
+          <p>Suculento e Saboroso</p>
         </div>      
       </div>
     
