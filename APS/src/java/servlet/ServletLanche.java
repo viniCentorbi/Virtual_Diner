@@ -39,6 +39,8 @@ public class ServletLanche extends HttpServlet {
         
         String valorButton = request.getParameter("botao");
         RequestDispatcher rd = null;
+        boolean MolhoExiste = false;
+        boolean SaladaExiste = false;
         
         if(valorButton.equals("cancelar")){
            
@@ -93,36 +95,33 @@ public class ServletLanche extends HttpServlet {
 
                 }
                 if(tipoSalada.equals(ingDao.listarIngredientes().get(i).getDescricao())){
-
+                    SaladaExiste = true;
+                    
                     salada.setIdIngredientes(ingDao.listarIngredientes().get(i).getIdIngredientes());
                     IdSalada = salada;
 
                     //Salvando o ingrediente escolhido no objeto
                     salada = ingDao.buscarIngredienteId(salada.getIdIngredientes());
 
-                    //Diminuindo o estoque do ingrediente
-                    salada.setEstoque(salada.getEstoque()-1);
+                    
 
-                    //Alterando o estoque do ingrediente no banco
-                    ingDao.alterar(salada);
+                    
 
                 }else if(tipoSalada.equals("Selecione")){
                     IdSalada = null;
                 }
 
                 if(tipoMolho.equals(ingDao.listarIngredientes().get(i).getDescricao())){
-
+                    MolhoExiste = true;
+                    
                     molho.setIdIngredientes(ingDao.listarIngredientes().get(i).getIdIngredientes());
                     IdMolho = molho;  
 
                     //Salvando o ingrediente escolhido no objeto
                     molho = ingDao.buscarIngredienteId(molho.getIdIngredientes());
 
-                    //Diminuindo o estoque do ingrediente
-                    molho.setEstoque(molho.getEstoque()-1);
+                    
 
-                    //Alterando o estoque do ingrediente no banco
-                    ingDao.alterar(molho);
 
                 }else if(tipoMolho.equals("Selecione")){
                     IdMolho = null;
@@ -138,10 +137,18 @@ public class ServletLanche extends HttpServlet {
             ld.salvar(l);
 
             //Diminuindo o estoque dos ingredientes
+            if (MolhoExiste) {
+                molho.setEstoque(molho.getEstoque()-1);
+                ingDao.alterar(molho);
+            }
+            if (SaladaExiste) {
+                salada.setEstoque(salada.getEstoque()-1);
+                ingDao.alterar(salada);
+            }
             pao.setEstoque(pao.getEstoque()-1);
             carne.setEstoque(carne.getEstoque()-1);
-
-
+            
+            
             //Alterando o estoque dos ingredientes no banco
             ingDao.alterar(pao);
             ingDao.alterar(carne);

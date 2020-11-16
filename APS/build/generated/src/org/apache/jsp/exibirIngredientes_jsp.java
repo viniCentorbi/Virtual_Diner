@@ -136,6 +136,13 @@ public final class exibirIngredientes_jsp extends org.apache.jasper.runtime.Http
       out.write("            opacity: none;\r\n");
       out.write("        }\r\n");
       out.write("        \r\n");
+      out.write("        .mensagemErro{\r\n");
+      out.write("            color: red;                \r\n");
+      out.write("        }\r\n");
+      out.write("        .mensagemSucesso{\r\n");
+      out.write("            color: #007600;                \r\n");
+      out.write("        }\r\n");
+      out.write("        \r\n");
       out.write("        \r\n");
       out.write("        </style>\r\n");
       out.write("    </head>\r\n");
@@ -173,7 +180,7 @@ public final class exibirIngredientes_jsp extends org.apache.jasper.runtime.Http
       out.write("        <main>\r\n");
       out.write("            <aside>\r\n");
       out.write("                <ul class=\"asideList\">\r\n");
-      out.write("                    <li><a href=\"pedidoAdm.jsp\" class=\"asideAnchor\">Inicio</a></li>\r\n");
+      out.write("                    <li><a href=\"home.jsp\" class=\"asideAnchor\">Inicio</a></li>\r\n");
       out.write("                    <li><a href=\"relatorio.jsp\" class=\"asideAnchor\">Relatório</a></li>                  \r\n");
       out.write("                    <li class=\"asideAnchor2\">Ingredientes</li>\r\n");
       out.write("                    <ul class=\"brunodatrabalho\">\r\n");
@@ -210,7 +217,12 @@ public final class exibirIngredientes_jsp extends org.apache.jasper.runtime.Http
       out.write("                                Estoque: <input type=\"number\" name=\"estoque\" autocomplete=\"off\" required>\r\n");
       out.write("                                <br>\r\n");
       out.write("                                <br>\r\n");
-      out.write("                                \r\n");
+      out.write("                                <p class=\"mensagemErro\"> ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${mensagemErro}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</p>\r\n");
+      out.write("                                <p class=\"mensagemSucesso\"> ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${mensagemSucesso}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</p>\r\n");
       out.write("                                <div class=\"buttonsExibirIngredientes\">\r\n");
       out.write("                                    \r\n");
       out.write("                                    <button class=\"alter\" type=\"submit\" name=\"botao\" value=\"alterar\">Alterar</button>\r\n");

@@ -48,7 +48,7 @@ public class ServletIngredientes extends HttpServlet {
         String dt_fab = request.getParameter("dt_fabricacao");
         String dt_val = request.getParameter("dt_validade");
         int estoque = Integer.parseInt(request.getParameter("estoque"));
-        String tipo = request.getParameter("dt_validade");
+        String tipo = request.getParameter("tipo");
         
        
         Ingredientes ingProcurado = new Ingredientes();

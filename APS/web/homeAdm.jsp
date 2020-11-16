@@ -17,6 +17,9 @@
         
         <title>Home Administrador</title>
         <style>
+        body,html{
+                height: 150%;
+            }        
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;

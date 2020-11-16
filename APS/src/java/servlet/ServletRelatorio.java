@@ -53,7 +53,7 @@ public class ServletRelatorio extends HttpServlet {
             dataPedido = formatador.parse(pDao.listarPedidos().get(i).getDtHoraPedido());
             timePedido = new Time(dataPedido.getTime());
 
-            if(timePedido.after(timeInicio) && timePedido.before(timeTermino)){
+            if(timePedido.after(timeInicio) && timePedido.before(timeTermino) || timePedido.equals(timeInicio) || timePedido.equals(timeTermino)){
                 qtdPedido++; 
             }
         }

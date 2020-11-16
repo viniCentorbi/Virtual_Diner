@@ -61,6 +61,7 @@ public final class lanche_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"menu.css\">\r\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\r\n");
+      out.write("        <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"logo.ico\">\r\n");
       out.write("        \r\n");
       out.write("        <link rel=\"stylesheet\" href=\"//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css\">\r\n");
       out.write("            \r\n");
@@ -118,15 +119,15 @@ public final class lanche_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <option value=\"\">Pão</option>\r\n");
       out.write("                            ");
 
-                                for(Ingredientes ingredientes:getListPao){ 
+                                for(Ingredientes pao:getListPao){ 
 
                             
       out.write("\r\n");
       out.write("                                <option value=\"");
-      out.print(ingredientes.getDescricao());
+      out.print(pao.getDescricao());
       out.write('"');
       out.write('>');
-      out.print(ingredientes.getDescricao());
+      out.print(pao.getDescricao());
       out.write("</option>\r\n");
       out.write("\r\n");
       out.write("                            ");
@@ -142,15 +143,15 @@ public final class lanche_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <option value=\"\">Carne</option>\r\n");
       out.write("                            ");
 
-                                for(Ingredientes ingredientes:getListCarne){ 
+                                for(Ingredientes carne:getListCarne){ 
 
                             
       out.write("\r\n");
       out.write("                                <option value=\"");
-      out.print(ingredientes.getDescricao());
+      out.print(carne.getDescricao());
       out.write('"');
       out.write('>');
-      out.print(ingredientes.getDescricao());
+      out.print(carne.getDescricao());
       out.write("</option>\r\n");
       out.write("\r\n");
       out.write("                            ");
@@ -165,15 +166,15 @@ public final class lanche_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <option value=\"\">Salada (opcional)</option>\r\n");
       out.write("                            ");
 
-                                for(Ingredientes ingredientes:getListSalada){ 
+                                for(Ingredientes salada:getListSalada){ 
 
                             
       out.write("\r\n");
       out.write("                                <option value=\"");
-      out.print(ingredientes.getDescricao());
+      out.print(salada.getDescricao());
       out.write('"');
       out.write('>');
-      out.print(ingredientes.getDescricao());
+      out.print(salada.getDescricao());
       out.write("</option>\r\n");
       out.write("\r\n");
       out.write("                            ");
@@ -188,15 +189,15 @@ public final class lanche_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <option value=\"\">Molho (opcional)</option>\r\n");
       out.write("                            ");
 
-                                for(Ingredientes ingredientes:getListMolho){ 
+                                for(Ingredientes molho:getListMolho){ 
 
                             
       out.write("\r\n");
       out.write("                                <option value=\"");
-      out.print(ingredientes.getDescricao());
+      out.print(molho.getDescricao());
       out.write('"');
       out.write('>');
-      out.print(ingredientes.getDescricao());
+      out.print(molho.getDescricao());
       out.write("</option>\r\n");
       out.write("\r\n");
       out.write("                            ");

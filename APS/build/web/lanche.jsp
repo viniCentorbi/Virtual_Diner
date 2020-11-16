@@ -67,10 +67,10 @@
 
                             <option value="">Pão</option>
                             <%
-                                for(Ingredientes ingredientes:getListPao){ 
+                                for(Ingredientes pao:getListPao){ 
 
                             %>
-                                <option value="<%=ingredientes.getDescricao()%>"><%=ingredientes.getDescricao()%></option>
+                                <option value="<%=pao.getDescricao()%>"><%=pao.getDescricao()%></option>
 
                             <%
                                 }
@@ -82,10 +82,10 @@
                         <select name="carne" id="carne" required>
                             <option value="">Carne</option>
                             <%
-                                for(Ingredientes ingredientes:getListCarne){ 
+                                for(Ingredientes carne:getListCarne){ 
 
                             %>
-                                <option value="<%=ingredientes.getDescricao()%>"><%=ingredientes.getDescricao()%></option>
+                                <option value="<%=carne.getDescricao()%>"><%=carne.getDescricao()%></option>
 
                             <%
                                 }
@@ -96,10 +96,10 @@
                         <select name="salada" id="salada">
                             <option value="">Salada (opcional)</option>
                             <%
-                                for(Ingredientes ingredientes:getListSalada){ 
+                                for(Ingredientes salada:getListSalada){ 
 
                             %>
-                                <option value="<%=ingredientes.getDescricao()%>"><%=ingredientes.getDescricao()%></option>
+                                <option value="<%=salada.getDescricao()%>"><%=salada.getDescricao()%></option>
 
                             <%
                                 }
@@ -110,10 +110,10 @@
                         <select name="molho" id="molho">
                             <option value="">Molho (opcional)</option>
                             <%
-                                for(Ingredientes ingredientes:getListMolho){ 
+                                for(Ingredientes molho:getListMolho){ 
 
                             %>
-                                <option value="<%=ingredientes.getDescricao()%>"><%=ingredientes.getDescricao()%></option>
+                                <option value="<%=molho.getDescricao()%>"><%=molho.getDescricao()%></option>
 
                             <%
                                 }

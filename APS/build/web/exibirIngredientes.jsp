@@ -20,6 +20,10 @@
         <title>Exibir Ingredientes</title>
         
         <style>
+            body,html{
+                height: 150%;
+            }    
+            
         th{
             background-color: #ed7801;
             border: 1px solid black;
@@ -103,7 +107,7 @@
         
         </style>
     </head>
-    <body>
+    <body style="overflow:auto">
         
         <%
             IngredientesDao ingDao = new IngredientesDao();
