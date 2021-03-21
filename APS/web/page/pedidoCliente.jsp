@@ -7,7 +7,6 @@
 <%@page import="dao.PedidoDao"%>
 <%@page import="entidade.Pedido"%>
 <%@page import="entidade.PedidoPK"%>
-<%@page import="entidade.Login"%>
 <%@page import="entidade.Lanche"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

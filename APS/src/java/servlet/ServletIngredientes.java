@@ -64,10 +64,9 @@ public class ServletIngredientes extends HttpServlet {
             ingredientesSalvar.setDtValidade(dt_val);         
             ingredientesSalvar.setEstoque(estoque);
             ingredientesSalvar.setTipo(tipo);
-            
+          
             //Salvando no Banco              
             ingredientesDao.salvar(ingredientesSalvar);
-            
             request.setAttribute("mensagemCadastroSucesso", "Ingrediente salvo com sucesso!");
                 
             RequestDispatcher rd = null;
@@ -79,7 +78,6 @@ public class ServletIngredientes extends HttpServlet {
             ingProcurado = ingredientesDao.buscarIngredienteId(idIngrediente);
             
             if(ingProcurado != null){            
-                
                 Ingredientes ingredientesAlterar = ingProcurado;
                 //Salvando os dados no ingrediente                  
                 ingredientesAlterar.setPreco(preco);       
@@ -87,7 +85,6 @@ public class ServletIngredientes extends HttpServlet {
 
                 //Alterando no Banco  
                 ingredientesDao.alterar(ingredientesAlterar);
-                
                 request.setAttribute("mensagemSucesso", "Ingrediente alterado com sucesso!");
                 
                 RequestDispatcher rd = null;

@@ -35,8 +35,6 @@ public class Pedido implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected PedidoPK pedidoPK;
-    
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "preco_pedido")
     private BigDecimal precoPedido;
     @Column(name = "dt_hora_pedido")

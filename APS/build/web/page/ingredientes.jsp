@@ -91,8 +91,8 @@
                                 <br>
                                 <p class="mensagemSucesso">${mensagemCadastroSucesso}</p>
                                 <table>
-                                    <td><button class="btnSalvarIngredientes" type="submit" name="botao" value="salvar">Salvar</button></td>
                                     <td><button class="btnCancelarIngredientes" type="submit" name="botao" value="cancelar">Cancelar</button></td>
+                                    <td><button class="btnSalvarIngredientes" type="submit" name="botao" value="salvar">Salvar</button></td>
                                 </table>           
                             </form> 
                         </div>

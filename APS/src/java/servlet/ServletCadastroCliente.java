@@ -29,7 +29,6 @@ public class ServletCadastroCliente extends HttpServlet {
         String cpf = request.getParameter("cpf");
         
         int tam = clienteDao.listarCliente().size();
-        
         boolean usuarioExiste = false;
         boolean cpfExiste = false;
         
@@ -41,13 +40,10 @@ public class ServletCadastroCliente extends HttpServlet {
                 
                 RequestDispatcher rd = null;
                 rd = request.getRequestDispatcher("/cadastro.jsp");
-                rd.forward(request, response);
-                
-                
+                rd.forward(request, response);        
             }
             if(cpf.equals(clienteDao.listarCliente().get(i).getCpf())){
                 //Exibir algum tipo de mensagem
-                
                 cpfExiste = true;
                 request.setAttribute("mensagem", "Cpf já cadastrado!");
                
@@ -56,7 +52,6 @@ public class ServletCadastroCliente extends HttpServlet {
                 rd.forward(request, response);
             }
         }
-        
         if(!(usuarioExiste && cpfExiste)){
             cliente.setUsuario(usuario);
             cliente.setSenha(senha);
@@ -69,18 +64,13 @@ public class ServletCadastroCliente extends HttpServlet {
                                             Integer.parseInt(request.getParameter("numero")),
                                             request.getParameter("cep"));
 
-
             cliente.setEndereco(endereco);  
-
             clienteDao.salvar(cliente);
 
             RequestDispatcher rd = null;
             rd = request.getRequestDispatcher("/login.jsp");
             rd.forward(request, response);
-        }
-        
-        
-        
+        } 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -63,7 +63,6 @@ public class Ingredientes implements Serializable {
     private String dtValidade;
     @Column(name = "descricao")
     private String descricao;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "preco")
     private BigDecimal preco;
     @Column(name = "tipo")

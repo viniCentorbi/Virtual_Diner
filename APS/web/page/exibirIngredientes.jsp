@@ -139,7 +139,7 @@
         <main>
             <aside>
                 <ul class="asideList">
-                    <li><a href="home.jsp" class="asideAnchor">Inicio</a></li>
+                    <li><a href="homeAdm.jsp" class="asideAnchor">Inicio</a></li>
                     <li><a href="relatorio.jsp" class="asideAnchor">Relatório</a></li>                  
                     <li class="asideAnchor2">Ingredientes</li>
                     <ul class="brunodatrabalho">
